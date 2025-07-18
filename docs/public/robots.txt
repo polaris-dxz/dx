@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://dx.xizhi.dev/sitemap.xml 
