@@ -9,11 +9,11 @@ description: 常见问题汇总和解决方案
 
 ## 📋 问题分类
 
-- [ ] Oh My Zsh 问题
-- [ ] VS Code / Cursor 问题
-- [ ] Git 和 Husky 问题
-- [ ] 环境变量问题
-- [ ] 其他问题
+- Oh My Zsh 问题
+- VS Code / Cursor 问题
+- Git 和 Husky 问题
+- 环境变量问题
+- 其他问题
 
 ## 1. Oh My Zsh 问题
 
@@ -174,10 +174,14 @@ Permission denied
 ```bash
 # 检查 MySQL 状态
 brew services list | grep mysql
+```
 
+```bash
 # 重启 MySQL
 brew services restart mysql
+```
 
+```bash
 # 重置 MySQL
 brew services stop mysql
 rm -rf /usr/local/var/mysql
@@ -190,10 +194,14 @@ mysql_secure_installation
 ```bash
 # 启动 PostgreSQL
 brew services start postgresql
+```
 
+```bash
 # 创建用户
 createuser -s postgres
+```
 
+```bash
 # 创建数据库
 createdb postgres
 ```
@@ -205,7 +213,9 @@ createdb postgres
 ```bash
 # 添加用户到 docker 组
 sudo usermod -aG docker $USER
+```
 
+```bash
 # 重启 Docker
 sudo systemctl restart docker
 ```
@@ -256,7 +266,9 @@ Set-ExecutionPolicy -ExecutionPolicy RemoteSigned -Scope CurrentUser
 ```bash
 # 安装 WSL
 wsl --install
+```
 
+```bash
 # 更新 WSL
 wsl --update
 ```
@@ -301,7 +313,9 @@ cp ~/.vimrc.backup ~/.vimrc
 ```bash
 # 查看系统日志
 tail -f /var/log/system.log
+```
 
+```bash
 # 查看应用日志
 tail -f ~/.zsh_history
 ```
@@ -310,7 +324,9 @@ tail -f ~/.zsh_history
 ```bash
 # 检查环境变量
 env | grep PATH
+```
 
+```bash
 # 检查 shell 配置
 echo $SHELL
 which zsh
@@ -320,7 +336,9 @@ which zsh
 ```bash
 # 测试网络连接
 ping github.com
+```
 
+```bash
 # 测试 SSH 连接
 ssh -vT git@github.com
 ```
@@ -336,12 +354,12 @@ ssh -vT git@github.com
 
 ## ✅ 问题解决清单
 
-- [ ] 确认问题类型
-- [ ] 尝试基本解决方案
-- [ ] 检查环境配置
-- [ ] 查看错误日志
-- [ ] 搜索相关文档
-- [ ] 寻求社区帮助
+- 确认问题类型
+- 尝试基本解决方案
+- 检查环境配置
+- 查看错误日志
+- 搜索相关文档
+- 寻求社区帮助
 
 ---
 

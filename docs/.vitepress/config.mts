@@ -33,10 +33,21 @@ export default defineConfig({
           { text: '完整指南', link: '/guide/' },
           { text: '环境安装', link: '/guide/environment-setup' },
           { text: '开发工具', link: '/guide/development-tools' },
+          { text: 'Shell 和编辑器', link: '/guide/shell-editor-setup' },
           { text: '浏览器插件', link: '/guide/browser-extensions' },
-          { text: '编程语言环境', link: '/guide/language-environments' },
           { text: 'SSH 配置', link: '/guide/ssh-setup' },
           { text: '问题解决', link: '/guide/troubleshooting' }
+        ]
+      },
+      {
+        text: '编程语言环境',
+        items: [
+          { text: 'Node.js 环境', link: '/guide/nodejs-environment' },
+          { text: 'Python 环境', link: '/guide/python-environment' },
+          { text: 'Go 环境', link: '/guide/go-environment' },
+          { text: 'Java 环境', link: '/guide/java-environment' },
+          { text: 'Rust 环境', link: '/guide/rust-environment' },
+          { text: '其他语言', link: '/guide/other-languages' }
         ]
       }
     ],

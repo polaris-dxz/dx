@@ -9,12 +9,12 @@ description: 必备开发软件安装指南
 
 ## 📋 工具清单
 
-- [ ] 终端工具
-- [ ] 代码编辑器
-- [ ] 容器化工具
-- [ ] 截图工具
-- [ ] 笔记工具
-- [ ] 其他工具
+- 终端工具
+- 代码编辑器
+- 容器化工具
+- 截图工具
+- 笔记工具
+- 其他工具
 
 ## 1. 终端工具
 
@@ -73,7 +73,15 @@ Cursor 可以直接导入 VS Code 的配置和插件。
 - **适用**: 全平台
 
 ### Git 仓库配置
+
+#### macOS/Linux
 ```bash
+# 克隆工作笔记仓库
+git clone https://github.com/polaris-dxz/work-notes.git
+```
+
+#### Windows
+```powershell
 # 克隆工作笔记仓库
 git clone https://github.com/polaris-dxz/work-notes.git
 ```
@@ -115,8 +123,21 @@ git clone https://github.com/polaris-dxz/work-notes.git
 - **适用**: 全平台
 
 ### Ollama
-- **功能**: 本地 AI 模型运行
-- **安装**: `brew install ollama` (macOS)
+
+#### macOS
+```bash
+brew install ollama
+```
+
+#### Windows
+```powershell
+winget install Ollama.Ollama
+```
+
+#### Linux
+```bash
+curl -fsSL https://ollama.ai/install.sh | sh
+```
 
 ## 7. 工作环境工具
 
@@ -126,8 +147,16 @@ git clone https://github.com/polaris-dxz/work-notes.git
 - **配置**: 需要配置 HTTPS 证书
 
 ### Pyenv
+
+#### macOS/Linux
 ```bash
 curl https://pyenv.run | bash
+```
+
+#### Windows
+```powershell
+# 使用 Chocolatey 安装
+choco install pyenv-win
 ```
 
 ## 📦 批量安装脚本
@@ -136,17 +165,53 @@ curl https://pyenv.run | bash
 ```bash
 # 安装常用工具
 brew install --cask warp
+```
+
+```bash
 brew install --cask visual-studio-code
+```
+
+```bash
 brew install --cask cursor
+```
+
+```bash
 brew install --cask docker
+```
+
+```bash
 brew install --cask snipaste
+```
+
+```bash
 brew install --cask obsidian
+```
+
+```bash
 brew install --cask logi-options-plus
+```
+
+```bash
 brew install --cask nutstore
+```
+
+```bash
 brew install --cask sunloginclient
+```
+
+```bash
 brew install --cask wechat
+```
+
+```bash
 brew install --cask keka
+```
+
+```bash
 brew install --cask xmind
+```
+
+```bash
 brew install ollama
 ```
 
@@ -154,28 +219,102 @@ brew install ollama
 ```powershell
 # 安装常用工具
 choco install warp
+```
+
+```powershell
 choco install vscode
+```
+
+```powershell
 choco install cursor
+```
+
+```powershell
 choco install docker-desktop
+```
+
+```powershell
 choco install snipaste
+```
+
+```powershell
 choco install obsidian
+```
+
+```powershell
 choco install nutstore
+```
+
+```powershell
 choco install sunloginclient
+```
+
+```powershell
 choco install wechat
+```
+
+```powershell
 choco install xmind
+```
+
+### Linux (使用包管理器)
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install snapd
+```
+
+```bash
+# 安装 VS Code
+sudo snap install code --classic
+```
+
+```bash
+# 安装 Docker
+sudo apt update
+sudo apt install docker.io
+sudo systemctl start docker
+sudo systemctl enable docker
+sudo usermod -aG docker $USER
+```
+
+```bash
+# 安装 Obsidian
+sudo snap install obsidian --classic
 ```
 
 ## ✅ 验证安装
 
 完成安装后，验证以下工具是否正常工作：
 
+#### macOS/Linux
 ```bash
 # 检查 Docker
 docker --version
+```
 
+```bash
 # 检查 VS Code
 code --version
+```
 
+```bash
+# 检查 Cursor
+cursor --version
+```
+
+#### Windows
+```powershell
+# 检查 Docker
+docker --version
+```
+
+```powershell
+# 检查 VS Code
+code --version
+```
+
+```powershell
 # 检查 Cursor
 cursor --version
 ```
@@ -186,4 +325,5 @@ cursor --version
 
 ---
 
+**遇到问题？** 查看 [问题解决](./troubleshooting.md) 页面。 
 **遇到问题？** 查看 [问题解决](./troubleshooting.md) 页面。 
