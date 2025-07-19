@@ -14,7 +14,7 @@ description: 新电脑开发环境完整配置指南
 1. **[环境安装](./environment-setup.md)** - 基础系统环境配置
 2. **[开发工具](./development-tools.md)** - 安装必备开发软件
 3. **[浏览器配置](./browser-extensions.md)** - 浏览器插件配置
-4. **[编程语言环境](./language-environments.md)** - 编程语言环境
+4. **[编程语言环境](./nodejs-environment.md)** - 编程语言环境
 5. **[SSH 配置](./ssh-setup.md)** - Git 和 SSH 配置
 6. **[问题排查](/troubleshooting)** - 常见问题汇总
 

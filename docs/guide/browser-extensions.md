@@ -123,7 +123,7 @@ description: 浏览器插件配置指南
 
 ## 🎉 下一步
 
-浏览器插件配置完成后，继续配置 [编程语言环境](./language-environments.md) 吧！
+浏览器插件配置完成后，继续配置 [编程语言环境](./nodejs-environment.md) 吧！
 
 ---
 

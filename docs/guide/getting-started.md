@@ -216,7 +216,7 @@ cat ~/.ssh/id_ed25519.pub
 ### 后端开发
 - [Python 环境配置](./python-environment.md)
 - [Go 环境配置](./go-environment.md)
-- [数据库环境配置](./database-environment.md)
+- [Java 环境配置](./java-environment.md)
 
 ### 全栈开发
 - [完整环境配置](./environment-setup.md)
@@ -287,7 +287,7 @@ git commit -m "Add hello.txt"
 
 - [完整环境安装指南](./environment-setup.md)
 - [开发工具详细配置](./development-tools.md)
-- [编程语言环境配置](./language-environments.md)
+- [编程语言环境配置](./nodejs-environment.md)
 
 ## 🎉 恭喜！
 
