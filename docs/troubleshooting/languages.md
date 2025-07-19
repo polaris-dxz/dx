@@ -104,6 +104,12 @@ brew install bun
 bun --version
 ```
 
+#### 网络加速服务
+如果代理配置仍然无法解决问题，可以考虑使用专业的网络加速服务：
+
+- **[桔子云](https://juziyun996.xyz/auth/register?code=3Lnr)** - 专业的 SSR/V2Ray 机场服务
+- **[桔子云项目](https://github.com/longbinlai/juzicloud)** - 桔子云官方项目地址和最新官网信息
+
 ## 2. Python 相关问题 {#python-相关问题}
 
 ### pyenv 版本管理问题

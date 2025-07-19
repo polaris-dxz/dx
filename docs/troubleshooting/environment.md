@@ -40,6 +40,14 @@ export http_proxy=http://127.0.0.1:7890
 export all_proxy=socks5://127.0.0.1:7890
 ```
 
+##### 网络加速服务
+如果镜像源和代理配置仍然无法解决问题，可以考虑使用专业的网络加速服务：
+
+- **[桔子云](https://juziyun996.xyz/auth/register?code=3Lnr)** - 专业的 SSR/V2Ray 机场服务
+- **[桔子云项目](https://github.com/longbinlai/juzicloud)** - 桔子云官方项目地址和最新官网信息
+
+这些服务可以帮助解决 GitHub、Homebrew 等服务的访问问题。
+
 ##### Linux
 ```bash
 # 使用国内镜像安装
@@ -98,6 +106,12 @@ curl -fsSL https://fnm.vercel.app/install | bash
 # 或者使用 Homebrew 安装
 brew install fnm
 ```
+
+#### 网络加速服务
+如果代理配置仍然无法解决问题，可以考虑使用专业的网络加速服务：
+
+- **[桔子云](https://juziyun996.xyz/auth/register?code=3Lnr)** - 专业的 SSR/V2Ray 机场服务
+- **[桔子云项目](https://github.com/longbinlai/juzicloud)** - 桔子云官方项目地址和最新官网信息
 
 ### fnm 命令未找到
 
@@ -304,6 +318,12 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # 重新加载配置
 source ~/.cargo/env
 ```
+
+#### 网络加速服务
+如果代理配置仍然无法解决问题，可以考虑使用专业的网络加速服务：
+
+- **[桔子云](https://juziyun996.xyz/auth/register?code=3Lnr)** - 专业的 SSR/V2Ray 机场服务
+- **[桔子云项目](https://github.com/longbinlai/juzicloud)** - 桔子云官方项目地址和最新官网信息
 
 ### Cargo 下载慢
 

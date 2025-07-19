@@ -147,6 +147,14 @@ echo "140.82.114.4 gist.github.com" | sudo tee -a /etc/hosts
 git config --global url."https://hub.fastgit.xyz/".insteadOf "https://github.com/"
 ```
 
+#### 网络加速服务
+如果以上方法仍然无法解决 GitHub 访问问题，可以考虑使用专业的网络加速服务：
+
+- **[桔子云](https://juziyun996.xyz/auth/register?code=3Lnr)** - 专业的 SSR/V2Ray 机场服务
+- **[桔子云项目](https://github.com/longbinlai/juzicloud)** - 桔子云官方项目地址和最新官网信息
+
+这些服务可以帮助解决网络连接问题，提供稳定的访问体验。
+
 ## 3. 代理配置问题 {#代理配置问题}
 
 ### 系统代理配置
