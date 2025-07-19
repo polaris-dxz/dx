@@ -14,7 +14,7 @@ export default defineConfig({
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     ['meta', { name: 'description', content: '新电脑开发环境配置指南 & 效率工具推荐 - 让开发更高效，让生活更有序' }],
     ['meta', { name: 'keywords', content: '开发环境,配置指南,开发者体验,DX,新电脑配置,效率工具,GTD,任务管理,学习笔记' }],
-    ['link', { rel: 'stylesheet', href: '/.vitepress/theme/custom.css' }],
+    ['link', { rel: 'stylesheet', href: '/custom.css' }],
   ],
 
   themeConfig: {
