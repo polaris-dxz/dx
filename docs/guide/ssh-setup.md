@@ -499,10 +499,10 @@ Copy-Item -Path ~/.gitconfig -Destination ~/.gitconfig_backup
 
 ## 🎉 下一步
 
-SSH 和 Git 配置完成后，查看 [问题解决](./troubleshooting.md) 页面了解常见问题！
+SSH 和 Git 配置完成后，查看 [问题排查](/troubleshooting) 页面了解常见问题！
 
 ---
 
-**遇到问题？** 查看 [问题解决](./troubleshooting.md) 页面。 
+**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。 
 
-**遇到问题？** 查看 [问题解决](./troubleshooting.md) 页面。 
+**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。 
