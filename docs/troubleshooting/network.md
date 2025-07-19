@@ -1,6 +1,7 @@
 ---
 title: 网络和代理问题
 description: 网络连接和代理配置问题排查和解决方案
+lastUpdated: true
 ---
 
 # 网络和代理问题

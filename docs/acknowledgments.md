@@ -1,6 +1,8 @@
 ---
 title: 鸣谢
 description: 感谢所有帮助过这个项目的工具和社区
+lastUpdated: false
+editLink: false
 ---
 
 # 鸣谢

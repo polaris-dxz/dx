@@ -1,6 +1,7 @@
 ---
 title: 环境安装
 description: 基础系统环境配置指南
+lastUpdated: true
 ---
 
 # 环境安装

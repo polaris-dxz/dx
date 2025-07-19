@@ -2,6 +2,7 @@
 layout: home
 title: DX - 开发者体验
 description: 新电脑开发环境配置指南 & 效率工具推荐
+lastUpdated: true
 hero:
   name: DX
   text: 开发者体验

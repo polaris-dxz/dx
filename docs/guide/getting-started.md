@@ -1,6 +1,7 @@
 ---
 title: 环境配置
 description: 新电脑开发环境快速配置指南
+lastUpdated: true
 ---
 
 # 环境配置

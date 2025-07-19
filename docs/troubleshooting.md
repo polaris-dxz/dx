@@ -1,6 +1,7 @@
 ---
 title: 问题排查
 description: 开发环境配置问题排查指南
+lastUpdated: true
 ---
 
 # 问题排查

@@ -1,6 +1,7 @@
 ---
 title: Node.js 环境配置
 description: Node.js 开发环境配置指南
+lastUpdated: true
 ---
 
 # Node.js 环境配置

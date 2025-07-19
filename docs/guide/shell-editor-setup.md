@@ -1,6 +1,7 @@
 ---
 title: Shell 和编辑器配置
 description: Oh My Zsh、Starship、Vim 插件等配置指南
+lastUpdated: true
 ---
 
 # Shell 和编辑器配置

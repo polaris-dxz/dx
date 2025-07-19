@@ -1,6 +1,7 @@
 ---
 title: 开发环境配置指南
 description: 新电脑开发环境完整配置指南
+lastUpdated: true
 ---
 
 # 开发环境配置指南

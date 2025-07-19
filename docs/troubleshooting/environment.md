@@ -1,6 +1,7 @@
 ---
 title: 环境配置问题
 description: 环境配置相关问题排查和解决方案
+lastUpdated: true
 ---
 
 # 环境配置问题

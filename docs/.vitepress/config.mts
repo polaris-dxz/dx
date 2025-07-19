@@ -78,6 +78,17 @@ export default defineConfig({
 
     search: {
       provider: 'local'
+    },
+
+    // 编辑链接配置
+    editLink: {
+      pattern: 'https://github.com/polaris-dxz/dx/edit/main/docs/:path',
+      text: '在 GitHub 上编辑此页面'
+    },
+
+    // 最后更新时间配置
+    lastUpdated: {
+      text: '最后更新'
     }
   }
 })
