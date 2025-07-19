@@ -3,7 +3,7 @@ import { defineConfig } from 'vitepress'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   title: "DX",
-  description: "开发者体验 - 新电脑开发环境配置指南",
+  description: "开发者体验 - 新电脑开发环境配置指南 & 效率工具推荐",
   
   // 自定义域名配置
   base: '/',
@@ -12,8 +12,9 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
-    ['meta', { name: 'description', content: '新电脑开发环境配置指南 - 让开发更高效' }],
-    ['meta', { name: 'keywords', content: '开发环境,配置指南,开发者体验,DX,新电脑配置' }],
+    ['meta', { name: 'description', content: '新电脑开发环境配置指南 & 效率工具推荐 - 让开发更高效，让生活更有序' }],
+    ['meta', { name: 'keywords', content: '开发环境,配置指南,开发者体验,DX,新电脑配置,效率工具,GTD,任务管理,学习笔记' }],
+    ['link', { rel: 'stylesheet', href: '/.vitepress/theme/custom.css' }],
   ],
 
   themeConfig: {
@@ -21,7 +22,6 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '环境配置', link: '/guide/environment-setup' },
-      { text: '完整指南', link: '/guide/' },
       { text: '问题排查', link: '/troubleshooting' }
     ],
 

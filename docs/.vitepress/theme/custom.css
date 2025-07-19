@@ -1,0 +1,24 @@
+/* 自定义样式 */
+
+/* 欢迎部分间距 */
+.welcome-section {
+  margin-top: 3rem;
+  margin-bottom: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--vp-c-divider);
+}
+
+.welcome-section h1 {
+  margin-bottom: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 600;
+  color: var(--vp-c-text-1);
+}
+
+/* 确保内容部分有足够的间距 */
+.welcome-section + p {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: var(--vp-c-text-2);
+} 
