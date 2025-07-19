@@ -21,4 +21,44 @@
   font-size: 1.1rem;
   line-height: 1.6;
   color: var(--vp-c-text-2);
+}
+
+/* 鸣谢部分样式 */
+.footer-acknowledgments {
+  margin-top: 3rem;
+  padding: 2rem;
+  background: var(--vp-c-bg-soft);
+  border-radius: 8px;
+  text-align: center;
+}
+
+.footer-acknowledgments h2 {
+  margin-bottom: 1rem;
+  color: var(--vp-c-text-1);
+}
+
+.footer-acknowledgments p {
+  margin-bottom: 1.5rem;
+  color: var(--vp-c-text-2);
+}
+
+.footer-acknowledgments ul {
+  list-style: none;
+  padding: 0;
+  margin-bottom: 1.5rem;
+}
+
+.footer-acknowledgments li {
+  margin-bottom: 0.5rem;
+  color: var(--vp-c-text-2);
+}
+
+.footer-acknowledgments a {
+  color: var(--vp-c-brand);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.footer-acknowledgments a:hover {
+  text-decoration: underline;
 } 

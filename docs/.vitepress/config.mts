@@ -22,7 +22,8 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '环境配置', link: '/guide/environment-setup' },
-      { text: '问题排查', link: '/troubleshooting' }
+      { text: '问题排查', link: '/troubleshooting' },
+      { text: '鸣谢', link: '/acknowledgments' }
     ],
 
     sidebar: {

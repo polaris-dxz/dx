@@ -130,3 +130,18 @@ DX（Developer Experience）是一个专注于提升开发者体验的综合性�
 
 **开始你的高效开发之旅吧！** 🚀
 
+---
+
+<div class="footer-acknowledgments">
+
+## 🙏 特别鸣谢
+
+感谢 [Cursor](https://cursor.sh/) 和 [Claude](https://claude.ai/) 在项目开发过程中提供的 invaluable 帮助！
+
+- **Cursor** - 强大的 AI 辅助编程环境
+- **Claude** - 优秀的技术顾问和文档助手
+
+[查看完整鸣谢 →](./acknowledgments)
+
+</div>
+
