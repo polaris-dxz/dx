@@ -29,7 +29,17 @@ curl https://pyenv.run | bash
 ```bash
 # 添加到 shell 配置
 echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
+# 检查 pyenv 命令是否存在，若不存在则将 pyenv 的 bin 目录加入 PATH 环境变量
+#    - `command -v pyenv` 检测 pyenv 是否可用
+#    - `>/dev/null` 将输出重定向到空设备（不显示消息）
+#    - `||` 如果左侧命令失败（返回非0），则执行右侧命令
 echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
+# 初始化 pyenv 的路径配置（兼容性处理，确保 shell 能正确找到 pyenv）
+#    - `--path` 选项仅设置必要的 PATH 变量，不加载其他功能
+echo 'eval "$(pyenv init --path)"' >> ~/.zshrc
+# 完全初始化 pyenv，启用所有功能（包括 shims 和自动补全）
+#    - 会设置 pyenv 的 shims 目录到 PATH 最前面
+#    - 启用 rehash 和命令补全等功能
 echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 ```
 
