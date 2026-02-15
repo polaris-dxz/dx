@@ -21,6 +21,9 @@ description: Rust 开发环境配置指南
 
 #### macOS/Linux
 ```bash
+# 设置国内镜像源（以字节跳动的 rsproxy.cn 为例，速度通常很快）
+export RUSTUP_DIST_SERVER="https://rsproxy.cn"
+export RUSTUP_UPDATE_ROOT="https://rsproxy.cn/rustup"
 # 安装 Rust
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
