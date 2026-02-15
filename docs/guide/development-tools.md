@@ -54,6 +54,9 @@ Cursor 可以直接导入 VS Code 的配置和插件。
 - **功能**: 图形化 Docker 管理界面
 - **安装**: 随 Docker 一起安装
 
+### OrbsSack
+-  **下载地址**: https://orbstack.dev
+
 ## 4. 截图工具
 
 ### Snipaste
