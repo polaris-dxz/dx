@@ -14,6 +14,7 @@ description: 必备开发软件安装指南
 - 容器化工具
 - 截图工具
 - 笔记工具
+- AI 终端编码助手（CC-Switch、Claude Code、OpenCode、Codex）
 - 其他工具
 
 ## 1. 终端工具
@@ -161,6 +162,113 @@ curl https://pyenv.run | bash
 # 使用 Chocolatey 安装
 choco install pyenv-win
 ```
+
+## 8. AI 终端编码助手
+
+以下工具在终端中运行，用于 AI 辅助编程。按需安装即可。
+
+### CC-Switch（cc-switch）
+
+[CC-Switch CLI](https://github.com/SaladDay/cc-switch-cli) 是命令行版「配置切换」工具，可统一管理 **Claude Code**、**Codex**、**Gemini CLI**、**OpenCode**、**OpenClaw** 等的多套 Provider、MCP、提示词与技能（与桌面版 [CC-Switch](https://github.com/farion1231/cc-switch) 同源能力）。口语里有时也写作「CC Switch」。
+
+#### macOS / Linux（推荐：一键脚本）
+
+```bash
+curl -fsSL https://github.com/SaladDay/cc-switch-cli/releases/latest/download/install.sh | bash
+```
+
+默认安装到 `~/.local/bin`，可通过环境变量 `CC_SWITCH_INSTALL_DIR` 指定目录。安装完成后确保该目录在 `PATH` 中。
+
+#### Windows
+
+从 [Releases](https://github.com/SaladDay/cc-switch-cli/releases/latest) 下载 `cc-switch-cli-windows-x64.zip`，解压后将 `cc-switch.exe` 放到已在 `PATH` 中的目录（或自行加入 `PATH`）。
+
+#### 使用
+
+```bash
+cc-switch
+```
+
+交互式菜单中可切换 Provider、同步 MCP 等；也可用 `cc-switch --help` 查看子命令。更多说明见上游 [README](https://github.com/SaladDay/cc-switch-cli/blob/main/README_ZH.md)。
+
+### Claude Code
+
+Anthropic 的终端 AI 编程助手，官方文档：[Claude Code](https://docs.anthropic.com/en/docs/claude-code/overview)。
+
+#### 原生安装脚本（推荐，无需 Node）
+
+**macOS / Linux：**
+
+```bash
+curl -fsSL https://claude.ai/install.sh | bash
+```
+
+**Windows（PowerShell）：**
+
+```powershell
+irm https://claude.ai/install.ps1 | iex
+```
+
+#### 使用包管理器（可选）
+
+- **macOS（Homebrew）：** `brew install --cask claude-code`
+- **Windows（WinGet）：** `winget install Anthropic.ClaudeCode`
+
+#### npm（需 Node.js 18+）
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+安装后可在终端执行 `claude`，首次运行按提示登录。
+
+### OpenCode
+
+开源终端 AI 编程代理，官网与文档：[OpenCode](https://opencode.ai/docs/)。
+
+#### 一键脚本
+
+```bash
+curl -fsSL https://opencode.ai/install | bash
+```
+
+#### 包管理器（任选其一）
+
+```bash
+# npm
+npm i -g opencode-ai@latest
+```
+
+```bash
+# macOS Homebrew（维护者 tap，通常较新）
+brew install anomalyco/tap/opencode
+```
+
+**Windows** 还可使用 [Scoop](https://scoop.sh/)：`scoop install opencode`，或 Chocolatey：`choco install opencode`（以各源实际包名为准）。
+
+安装后在终端执行 `opencode`（或按官方文档当前命令）。
+
+### Codex（OpenAI）
+
+OpenAI 终端编程代理，官方说明：[Codex CLI](https://developers.openai.com/codex/cli)。
+
+#### npm（官方推荐）
+
+```bash
+npm i -g @openai/codex
+```
+
+升级：
+
+```bash
+npm i -g @openai/codex@latest
+```
+
+#### Homebrew（可选）
+
+若文档或 `brew search codex` 中提供公式，可使用 Homebrew 安装；以 [官方 CLI 文档](https://developers.openai.com/codex/cli) 当前说明为准。
+
+安装后在终端执行 `codex`，首次运行按提示使用 ChatGPT 账号或 API Key 登录。Codex 需订阅或权益中包含 Codex，详见 [定价说明](https://developers.openai.com/codex/pricing)。**Windows** 官方建议优先在 **WSL** 中使用，见 [Windows 指南](https://developers.openai.com/codex/windows)。
 
 ## 📦 批量安装脚本
 
@@ -328,5 +436,4 @@ cursor --version
 
 ---
 
-**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。 
-**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。 
+**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。

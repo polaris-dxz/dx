@@ -98,4 +98,4 @@ lastUpdated: true
 
 ---
 
-**需要更详细的配置说明？** 查看 [环境配置](/guide/environment-setup)！ 
+**需要更详细的配置说明？** 先看 [指南总览](/guide/)，需要系统与终端基础时打开 [环境安装](/guide/environment-setup)。 

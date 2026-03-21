@@ -296,4 +296,4 @@ git commit -m "Add hello.txt"
 
 ---
 
-**需要更详细的配置？** 查看 [完整指南](./index.md)！ 
+**需要更详细的配置？** 查看 [指南总览](./index.md)！ 

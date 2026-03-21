@@ -8,6 +8,16 @@ lastUpdated: true
 
 本章节将指导你完成基础系统环境的配置，包括终端、包管理器、字体等必备工具。
 
+## macOS 推荐顺序
+
+在新 Mac 上建议按下面顺序做，少踩「缺编译器 / 缺 git」之类的坑：
+
+1. **先装 Xcode Command Line Tools**：终端执行 `xcode-select --install`，按弹窗完成安装（详见下文「1. 安装 Xcode 和开发工具」）。Homebrew、从源码编译的包、以及许多安装脚本都依赖其中的 `git`、`clang`、`make` 等。
+2. **再装 Homebrew**（详见「3. 安装 Homebrew」），之后可用 `brew install` 装大量命令行工具和图形应用。
+3. **再按需安装** Node.js、Oh My Zsh、字体、编辑器等（本文后续章节）；Node 也可在装好 Homebrew 后用官方脚本或 `brew` 管理。
+
+若你直接跑 Homebrew 安装脚本，有时也会提示安装 Command Line Tools，但**先装好 CLT 再装 Homebrew**，流程通常更顺、更少中断。
+
 ## 📋 安装清单
 
 - Xcode 和开发工具

@@ -21,7 +21,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '环境配置', link: '/guide/environment-setup' },
+      { text: '配置指南', link: '/guide/' },
       { text: '问题排查', link: '/troubleshooting' },
       { text: '鸣谢', link: '/acknowledgments' }
     ],
@@ -45,8 +45,8 @@ export default defineConfig({
         {
           text: '指南',
           items: [
-            { text: '环境配置', link: '/guide/environment-setup' },
-            { text: '完整指南', link: '/guide/' },
+            { text: '指南总览', link: '/guide/' },
+            { text: '环境安装', link: '/guide/environment-setup' },
             { text: '开发工具', link: '/guide/development-tools' },
             { text: 'Shell 和编辑器', link: '/guide/shell-editor-setup' },
             { text: '浏览器插件', link: '/guide/browser-extensions' },
