@@ -1,463 +1,163 @@
 ---
 title: Python 环境配置
-description: Python 开发环境配置指南
+description: 使用 uv 管理 Python 与依赖，配合 Jupyter Notebook / Lab
 ---
 
 # Python 环境配置
 
-本章节将指导你配置 Python 开发环境，包括 Python 安装、虚拟环境管理、包管理器配置等。
+本章节以 **[uv](https://docs.astral.sh/uv/)** 作为 Python 版本、虚拟环境与依赖管理的主工具，并配合 **Jupyter Notebook / JupyterLab** 做交互式开发与实验。uv 由 Astral 维护，用 Rust 编写，安装与解析依赖都很快。
 
 ## 📋 配置清单
 
-- Python 安装
-- 虚拟环境管理
-- 包管理器配置
-- 开发工具安装
-- 项目配置
+- 安装 uv
+- 用 uv 安装/切换 Python 版本
+- 项目与虚拟环境（`pyproject.toml` / `uv.lock`）
+- Notebook（Jupyter）
+- 开发工具（可选）
 - 验证安装
 
-## 1. 安装 Python
+## 1. 安装 uv
 
-### 使用 pyenv 安装 (推荐)
-
-#### macOS/Linux
-```bash
-# 安装 pyenv
-curl https://pyenv.run | bash
-```
+### macOS / Linux
 
 ```bash
-# 添加到 shell 配置
-echo 'export PYENV_ROOT="$HOME/.pyenv"' >> ~/.zshrc
-# 检查 pyenv 命令是否存在，若不存在则将 pyenv 的 bin 目录加入 PATH 环境变量
-#    - `command -v pyenv` 检测 pyenv 是否可用
-#    - `>/dev/null` 将输出重定向到空设备（不显示消息）
-#    - `||` 如果左侧命令失败（返回非0），则执行右侧命令
-echo 'command -v pyenv >/dev/null || export PATH="$PYENV_ROOT/bin:$PATH"' >> ~/.zshrc
-# 初始化 pyenv 的路径配置（兼容性处理，确保 shell 能正确找到 pyenv）
-#    - `--path` 选项仅设置必要的 PATH 变量，不加载其他功能
-echo 'eval "$(pyenv init --path)"' >> ~/.zshrc
-# 完全初始化 pyenv，启用所有功能（包括 shims 和自动补全）
-#    - 会设置 pyenv 的 shims 目录到 PATH 最前面
-#    - 启用 rehash 和命令补全等功能
-echo 'eval "$(pyenv init -)"' >> ~/.zshrc
+curl -LsSf https://astral.sh/uv/install.sh | sh
 ```
 
-```bash
-# 重新加载配置
-source ~/.zshrc
-```
+安装完成后按提示重启终端，或执行安装脚本输出的 `source` 命令，使 `uv` 在 `PATH` 中可用。
 
-```bash
-# 安装最新 Python 版本
-pyenv install 3.11.0
-```
-
-```bash
-# 设置全局 Python 版本
-pyenv global 3.11.0
-```
-
-#### Windows
-```powershell
-# 使用 Chocolatey 安装 pyenv-win
-choco install pyenv-win
-```
+### Windows（PowerShell）
 
 ```powershell
-# 安装 Python 版本
-pyenv install 3.11.0
+powershell -ExecutionPolicy ByPass -c "irm https://astral.sh/uv/install.ps1 | iex"
 ```
 
-```powershell
-# 设置全局 Python 版本
-pyenv global 3.11.0
-```
-
-### 直接安装
-
-#### macOS
-```bash
-# 使用 Homebrew 安装
-brew install python@3.11
-```
-
-#### Windows
-```powershell
-# 使用 Chocolatey 安装
-choco install python
-```
-
-#### Linux
-```bash
-# Ubuntu/Debian
-sudo apt update
-sudo apt install python3 python3-pip python3-venv
-```
-
-## 2. 配置包管理器
-
-### 配置 pip 镜像
-
-#### macOS/Linux
-```bash
-# 设置清华镜像
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-```
+### 验证
 
 ```bash
-# 设置阿里云镜像
-pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+uv --version
 ```
 
-#### Windows
-```powershell
-# 设置清华镜像
-pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
-```
+## 2. 国内镜像（可选）
 
-```powershell
-# 设置阿里云镜像
-pip config set global.index-url https://mirrors.aliyun.com/pypi/simple/
-```
-
-### 升级 pip
-
-#### macOS/Linux
-```bash
-# 升级 pip
-python -m pip install --upgrade pip
-```
-
-#### Windows
-```powershell
-# 升级 pip
-python -m pip install --upgrade pip
-```
-
-## 3. 虚拟环境管理
-
-### 安装虚拟环境工具
-
-#### macOS/Linux
-```bash
-# 安装 virtualenv
-pip install virtualenv
-```
+需要加速从 PyPI 下载时，可设置索引地址（任选其一）：
 
 ```bash
-# 安装 virtualenvwrapper
-pip install virtualenvwrapper
+# 清华源示例（当前终端会话）
+export UV_INDEX_URL=https://pypi.tuna.tsinghua.edu.cn/simple
 ```
 
-#### Windows
-```powershell
-# 安装 virtualenv
-pip install virtualenv
+也可在项目的 `pyproject.toml` 里为 `tool.uv` 配置 `index-url`，参见 [uv 文档：索引](https://docs.astral.sh/uv/configuration/indexes/)。
+
+## 3. 安装与管理 Python 版本
+
+```bash
+# 查看可安装版本
+uv python list
+
+# 安装指定版本（示例：3.12）
+uv python install 3.12
+
+# 在项目目录固定版本时，常用 pyproject.toml 中 requires-python，或用：
+uv python pin 3.12
 ```
 
-```powershell
-# 安装 virtualenvwrapper-win
-pip install virtualenvwrapper-win
+Windows 下命令相同（在已安装 uv 的终端中执行）。
+
+## 4. 项目与虚拟环境
+
+### 新建项目
+
+```bash
+mkdir myapp && cd myapp
+uv init
 ```
+
+会生成 `pyproject.toml`（及可选的 `README.md`）。
 
 ### 创建虚拟环境
 
-#### 使用 venv (Python 3.3+)
-
-#### macOS/Linux
 ```bash
-# 创建虚拟环境
-python -m venv myproject
+uv venv
 ```
 
-```bash
-# 激活虚拟环境
-source myproject/bin/activate
-```
+默认在项目下创建 `.venv`。激活方式：
 
-```bash
-# 退出虚拟环境
-deactivate
-```
+- **macOS / Linux**：`source .venv/bin/activate`
+- **Windows**：`.venv\Scripts\activate`
 
-#### Windows
-```powershell
-# 创建虚拟环境
-python -m venv myproject
-```
+不激活也可直接用 `uv run` 在环境内执行命令（推荐）。
 
-```powershell
-# 激活虚拟环境
-myproject\Scripts\activate
-```
-
-```powershell
-# 退出虚拟环境
-deactivate
-```
-
-#### 使用 virtualenv
-
-#### macOS/Linux
-```bash
-# 创建虚拟环境
-virtualenv myproject
-```
+### 添加依赖
 
 ```bash
-# 激活虚拟环境
-source myproject/bin/activate
+uv add requests
+uv add --dev ruff pytest
 ```
+
+会更新 `pyproject.toml` 与 `uv.lock`，并安装到当前项目的虚拟环境。
+
+### 同步环境（拉代码后）
 
 ```bash
-# 退出虚拟环境
-deactivate
+uv sync
 ```
 
-#### Windows
-```powershell
-# 创建虚拟环境
-virtualenv myproject
-```
+## 5. Notebook（Jupyter）
 
-```powershell
-# 激活虚拟环境
-myproject\Scripts\activate
-```
-
-```powershell
-# 退出虚拟环境
-deactivate
-```
-
-## 4. 安装开发工具
-
-### 代码质量工具
-
-#### macOS/Linux
-```bash
-# 安装 flake8
-pip install flake8
-```
+在**项目内**安装 Jupyter 与内核相关依赖：
 
 ```bash
-# 安装 black
-pip install black
+uv add jupyterlab notebook ipykernel
 ```
+
+- 启动 **JupyterLab**（推荐）：
 
 ```bash
-# 安装 isort
-pip install isort
+uv run jupyter lab
 ```
+
+- 或经典 **Notebook** 界面：
 
 ```bash
-# 安装 mypy
-pip install mypy
+uv run jupyter notebook
 ```
+
+若希望当前项目虚拟环境作为 Jupyter 里的可选内核，可在项目环境中执行：
 
 ```bash
-# 安装 pylint
-pip install pylint
+uv run python -m ipykernel install --user --name=myproject --display-name="Python (myproject)"
 ```
 
-#### Windows
-```powershell
-# 安装 flake8
-pip install flake8
-```
+之后在 Jupyter 界面里切换内核即可。
 
-```powershell
-# 安装 black
-pip install black
-```
+## 6. 开发工具（可选）
 
-```powershell
-# 安装 isort
-pip install isort
-```
-
-```powershell
-# 安装 mypy
-pip install mypy
-```
-
-```powershell
-# 安装 pylint
-pip install pylint
-```
-
-### 测试工具
-
-#### macOS/Linux
-```bash
-# 安装 pytest
-pip install pytest
-```
+用 uv 以开发依赖形式安装，例如：
 
 ```bash
-# 安装 pytest-cov
-pip install pytest-cov
+uv add --dev ruff black pytest
 ```
+
+需要全局 CLI 工具时，可使用：
 
 ```bash
-# 安装 pytest-mock
-pip install pytest-mock
+uv tool install ruff
 ```
 
-#### Windows
-```powershell
-# 安装 pytest
-pip install pytest
-```
+详见 [uv tool](https://docs.astral.sh/uv/guides/tools/)。
 
-```powershell
-# 安装 pytest-cov
-pip install pytest-cov
-```
+## 7. 环境变量与 `.env`
 
-```powershell
-# 安装 pytest-mock
-pip install pytest-mock
-```
-
-### 开发框架
-
-#### macOS/Linux
-```bash
-# 安装 Django
-pip install django
-```
+创建 `.env` 后，在代码里用 `python-dotenv` 读取时：
 
 ```bash
-# 安装 Flask
-pip install flask
+uv add python-dotenv
 ```
 
-```bash
-# 安装 FastAPI
-pip install fastapi uvicorn
-```
+## 8. 调试配置（VS Code）
 
-```bash
-# 安装 Jupyter
-pip install jupyter
-```
-
-#### Windows
-```powershell
-# 安装 Django
-pip install django
-```
-
-```powershell
-# 安装 Flask
-pip install flask
-```
-
-```powershell
-# 安装 FastAPI
-pip install fastapi uvicorn
-```
-
-```powershell
-# 安装 Jupyter
-pip install jupyter
-```
-
-## 5. 项目配置
-
-### 创建 requirements.txt
-
-#### macOS/Linux
-```bash
-# 创建 requirements.txt
-touch requirements.txt
-```
-
-```bash
-# 生成依赖列表
-pip freeze > requirements.txt
-```
-
-#### Windows
-```powershell
-# 创建 requirements.txt
-New-Item -Path requirements.txt -ItemType File
-```
-
-```powershell
-# 生成依赖列表
-pip freeze > requirements.txt
-```
-
-### 安装项目依赖
-
-#### macOS/Linux
-```bash
-# 安装依赖
-pip install -r requirements.txt
-```
-
-```bash
-# 安装开发依赖
-pip install -r requirements-dev.txt
-```
-
-#### Windows
-```powershell
-# 安装依赖
-pip install -r requirements.txt
-```
-
-```powershell
-# 安装开发依赖
-pip install -r requirements-dev.txt
-```
-
-## 6. 环境变量配置
-
-### 创建 .env 文件
-
-#### macOS/Linux
-```bash
-# 创建 .env 文件
-touch .env
-```
-
-```bash
-# 创建 .env.example 文件
-touch .env.example
-```
-
-#### Windows
-```powershell
-# 创建 .env 文件
-New-Item -Path .env -ItemType File
-```
-
-```powershell
-# 创建 .env.example 文件
-New-Item -Path .env.example -ItemType File
-```
-
-### 安装 python-dotenv
-
-#### macOS/Linux
-```bash
-pip install python-dotenv
-```
-
-#### Windows
-```powershell
-pip install python-dotenv
-```
-
-## 7. 调试配置
-
-### VS Code 调试配置
-
-创建 `.vscode/launch.json` 文件：
+创建 `.vscode/launch.json` 示例：
 
 ```json
 {
@@ -475,131 +175,25 @@ pip install python-dotenv
 }
 ```
 
-## 8. 性能优化
-
-### 配置 pip 缓存
-
-#### macOS/Linux
-```bash
-# 查看缓存位置
-pip cache dir
-```
-
-```bash
-# 清理缓存
-pip cache purge
-```
-
-#### Windows
-```powershell
-# 查看缓存位置
-pip cache dir
-```
-
-```powershell
-# 清理缓存
-pip cache purge
-```
-
-### 使用 pip-tools
-
-#### macOS/Linux
-```bash
-# 安装 pip-tools
-pip install pip-tools
-```
-
-```bash
-# 编译依赖
-pip-compile requirements.in
-```
-
-```bash
-# 同步依赖
-pip-sync requirements.txt
-```
-
-#### Windows
-```powershell
-# 安装 pip-tools
-pip install pip-tools
-```
-
-```powershell
-# 编译依赖
-pip-compile requirements.in
-```
-
-```powershell
-# 同步依赖
-pip-sync requirements.txt
-```
+解释器请选择项目下的 `.venv/bin/python`（Windows 为 `.venv\Scripts\python.exe`）。
 
 ## ✅ 验证安装
 
-完成安装后，验证以下工具是否正常工作：
-
-#### macOS/Linux
 ```bash
-# 检查 Python
-python --version
+uv --version
+uv run python --version
+uv run python -c "import sys; print(sys.executable)"
 ```
 
-```bash
-# 检查 pip
-pip --version
-```
+确认 Jupyter：
 
 ```bash
-# 检查 pyenv
-pyenv --version
+uv run jupyter --version
 ```
 
-```bash
-# 检查虚拟环境
-python -m venv --help
-```
+## 可选：其他工作方式
 
-```bash
-# 检查 Django
-django-admin --version
-```
-
-```bash
-# 检查 Flask
-flask --version
-```
-
-#### Windows
-```powershell
-# 检查 Python
-python --version
-```
-
-```powershell
-# 检查 pip
-pip --version
-```
-
-```powershell
-# 检查 pyenv
-pyenv --version
-```
-
-```powershell
-# 检查虚拟环境
-python -m venv --help
-```
-
-```powershell
-# 检查 Django
-django-admin --version
-```
-
-```powershell
-# 检查 Flask
-flask --version
-```
+若团队仍使用 **pyenv**、纯 **pip + venv** 或 **pip-tools**，可与现有文档或其它教程对照；日常新项目更推荐统一采用 **uv + `pyproject.toml`**，与 Notebook 搭配时依赖与内核也更容易保持一致。
 
 ## 🎉 下一步
 
@@ -611,4 +205,4 @@ Python 环境配置完成后，继续配置其他编程语言环境：
 
 ---
 
-**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。 
+**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。
