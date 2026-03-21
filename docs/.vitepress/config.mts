@@ -45,7 +45,16 @@ export default defineConfig({
         {
           text: '指南',
           items: [
-            { text: '指南总览', link: '/guide/' },
+            {
+              text: '指南总览',
+              link: '/guide/',
+              collapsed: false,
+              items: [
+                { text: 'macOS 环境安装', link: '/guide/environment-setup-macos' },
+                { text: 'Linux 环境安装', link: '/guide/environment-setup-linux' },
+                { text: 'Windows 环境安装', link: '/guide/environment-setup-windows' }
+              ]
+            },
             { text: '环境安装', link: '/guide/environment-setup' },
             { text: '开发工具', link: '/guide/development-tools' },
             { text: 'Shell 和编辑器', link: '/guide/shell-editor-setup' },

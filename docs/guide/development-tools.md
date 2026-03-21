@@ -264,11 +264,7 @@ npm i -g @openai/codex
 npm i -g @openai/codex@latest
 ```
 
-#### Homebrew（可选）
-
-若文档或 `brew search codex` 中提供公式，可使用 Homebrew 安装；以 [官方 CLI 文档](https://developers.openai.com/codex/cli) 当前说明为准。
-
-安装后在终端执行 `codex`，首次运行按提示使用 ChatGPT 账号或 API Key 登录。Codex 需订阅或权益中包含 Codex，详见 [定价说明](https://developers.openai.com/codex/pricing)。**Windows** 官方建议优先在 **WSL** 中使用，见 [Windows 指南](https://developers.openai.com/codex/windows)。
+安装后在终端执行 `codex`，首次运行按提示使用 ChatGPT 账号或 API Key 登录。Codex 需订阅或权益中包含 Codex，详见 [定价说明](https://developers.openai.com/codex/pricing)。**Windows** 官方建议优先在 **WSL** 中使用，见 [Windows 指南](https://developers.openai.com/codex/windows)。其他安装方式以 [官方 CLI 文档](https://developers.openai.com/codex/cli) 为准。
 
 ## 📦 批量安装脚本
 
