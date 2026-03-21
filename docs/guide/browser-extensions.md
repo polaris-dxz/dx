@@ -64,7 +64,6 @@ description: 浏览器插件配置指南
 ### Wappalyzer - Technology profiler
 - **下载地址**: [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/wappalyzer-technology-profiler/mnbndgmknlpdjdnjfmfcdjoegcckoikn?hl=zh-CN)
 - **功能**: 网站技术栈分析
-- **账号**: 0x31f9f17@gmail.com
 - **特点**: 可以识别网站使用的技术框架
 
 ## 6. 开发者工具
