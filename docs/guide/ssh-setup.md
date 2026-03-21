@@ -1,18 +1,18 @@
 ---
 title: SSH 配置
-description: SSH 密钥生成和 Git 配置指南
+description: SSH 密钥生成与 GitHub 连接指南
 ---
 
 # SSH 配置
 
-本章节将指导你配置 SSH 密钥和 Git 设置，确保安全的代码管理。
+本章节将指导你配置 SSH 密钥并与 GitHub 建立安全连接。Git 全局设置、别名与凭证等请见 [Git 配置](./git.md)。
 
 ## 📋 配置清单
 
 - SSH 密钥生成
 - SSH 密钥配置
-- Git 配置
-- 验证配置
+- [Git 全局配置](./git.md)（用户信息、凭证等）
+- 验证 SSH 与克隆
 
 ## 1. 生成 SSH 密钥
 
@@ -198,153 +198,11 @@ cat ~/.ssh/id_ed25519.pub
 4. 粘贴公钥内容
 5. 点击 "Add SSH key"
 
-## 5. 配置 Git
+## 5. Git 全局配置
 
-### 设置用户信息
+用户信息、默认分支、`git pull` 行为、编辑器、别名以及 HTTPS 凭证等，请参阅 [Git 配置](./git.md)。
 
-#### macOS/Linux
-```bash
-# 设置全局用户信息
-git config --global user.name "your_name"
-git config --global user.email "your_email@example.com"
-```
-
-```bash
-# 设置工作账户 (如果需要)
-git config --global user.name "work_name"
-git config --global user.email "work_email@company.com"
-```
-
-#### Windows
-```powershell
-# 设置全局用户信息
-git config --global user.name "your_name"
-git config --global user.email "your_email@example.com"
-```
-
-```powershell
-# 设置工作账户 (如果需要)
-git config --global user.name "work_name"
-git config --global user.email "work_email@company.com"
-```
-
-### 配置默认分支
-
-#### macOS/Linux
-```bash
-# 设置默认分支为 main
-git config --global init.defaultBranch main
-```
-
-#### Windows
-```powershell
-# 设置默认分支为 main
-git config --global init.defaultBranch main
-```
-
-### 配置 Pull 行为（可选）
-
-默认情况下 `git pull` 会合并远程分支，可能产生合并提交。若希望拉取时用 rebase 保持线性历史，可开启 `pull.rebase`：
-
-- **全局**（当前用户下所有仓库生效）：
-
-#### macOS/Linux
-```bash
-git config --global pull.rebase true
-```
-
-#### Windows
-```powershell
-git config --global pull.rebase true
-```
-
-- **仅当前仓库**：去掉 `--global`，在仓库目录执行 `git config pull.rebase true`。
-
-### 配置编辑器
-
-#### macOS/Linux
-```bash
-# 设置默认编辑器
-git config --global core.editor "code --wait"  # VS Code
-git config --global core.editor "vim"          # Vim
-```
-
-#### Windows
-```powershell
-# 设置默认编辑器
-git config --global core.editor "code --wait"  # VS Code
-git config --global core.editor "notepad"      # Notepad
-```
-
-### 配置别名
-
-#### macOS/Linux
-```bash
-# 常用别名
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.unstage 'reset HEAD --'
-git config --global alias.last 'log -1 HEAD'
-git config --global alias.visual '!gitk'
-```
-
-#### Windows
-```powershell
-# 常用别名
-git config --global alias.st status
-git config --global alias.co checkout
-git config --global alias.br branch
-git config --global alias.ci commit
-git config --global alias.unstage 'reset HEAD --'
-git config --global alias.last 'log -1 HEAD'
-git config --global alias.visual '!gitk'
-```
-
-## 6. 配置 Git 凭证
-
-### 使用 SSH (推荐)
-
-#### macOS/Linux
-```bash
-# 克隆仓库时使用 SSH
-git clone git@github.com:username/repository.git
-```
-
-```bash
-# 或者修改现有仓库的远程 URL
-git remote set-url origin git@github.com:username/repository.git
-```
-
-#### Windows
-```powershell
-# 克隆仓库时使用 SSH
-git clone git@github.com:username/repository.git
-```
-
-```powershell
-# 或者修改现有仓库的远程 URL
-git remote set-url origin git@github.com:username/repository.git
-```
-
-### 使用 HTTPS (备选)
-
-#### macOS/Linux
-```bash
-# 配置凭证存储
-git config --global credential.helper store  # 永久存储
-git config --global credential.helper cache  # 临时存储
-```
-
-#### Windows
-```powershell
-# 配置凭证存储
-git config --global credential.helper store  # 永久存储
-git config --global credential.helper cache  # 临时存储
-```
-
-## 7. 验证配置
+## 6. 验证配置
 
 ### 测试 SSH 连接
 
@@ -360,41 +218,21 @@ ssh -T git@github.com
 ssh -T git@github.com
 ```
 
-### 测试 Git 配置
+### 检查 SSH Agent 中的密钥
 
 #### macOS/Linux
 ```bash
-# 检查 Git 配置
-git config --list
-```
-
-```bash
-# 检查 SSH 密钥
 ssh-add -l
-```
-
-```bash
-# 测试仓库克隆
-git clone git@github.com:username/test-repo.git
 ```
 
 #### Windows
 ```powershell
-# 检查 Git 配置
-git config --list
-```
-
-```powershell
-# 检查 SSH 密钥
 ssh-add -l
 ```
 
-```powershell
-# 测试仓库克隆
-git clone git@github.com:username/test-repo.git
-```
+Git 配置与克隆测试见 [Git 配置](./git.md#verify-git)。
 
-## 8. 多账户配置
+## 7. 多账户配置
 
 ### 工作账户配置
 
@@ -468,7 +306,7 @@ git config user.email "work_email@company.com"
 git clone git@github-work:company/repository.git
 ```
 
-## 9. 安全建议
+## 8. 安全建议
 
 ### 密钥管理
 - 定期更换 SSH 密钥
@@ -517,10 +355,8 @@ Copy-Item -Path ~/.gitconfig -Destination ~/.gitconfig_backup
 
 ## 🎉 下一步
 
-SSH 和 Git 配置完成后，查看 [问题排查](/troubleshooting) 页面了解常见问题！
+SSH 连接验证通过后，请确认 [Git 配置](./git.md) 已完成；然后可查看 [问题排查](/troubleshooting) 了解常见问题。
 
 ---
 
-**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。 
-
-**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。 
+**遇到问题？** 查看 [问题排查](/troubleshooting) 页面。

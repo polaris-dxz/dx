@@ -21,8 +21,11 @@ lastUpdated: true
 ## 1. 安装 Xcode 和开发工具
 
 ### macOS
-1. 从 App Store 安装 Xcode
-2. 安装完成后，会自动安装 git 和命令行开发工具
+
+做一般开发时，**安装 Xcode Command Line Tools（命令行工具）即可**，其中包含 `git`、`clang`、`make` 等，**不必**仅为使用 Git 而安装完整 Xcode。
+
+- **仅命令行工具（推荐大多数场景）**：在终端执行 `xcode-select --install`，按弹窗提示安装。若尚未安装过，首次在终端运行 `git` 时系统也可能提示安装「命令行开发者工具」。
+- **完整 Xcode（仅当你需要 Xcode IDE / iOS 等开发）**：从 App Store 安装 Xcode；安装后同样具备上述命令行工具，通常无需再单独安装 Command Line Tools。
 
 ### Windows
 1. 安装 [Git for Windows](https://git-scm.com/downloads)

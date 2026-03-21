@@ -313,7 +313,7 @@ mongod --version
 
 ## 🎉 下一步
 
-编程语言环境配置完成后，继续配置 [SSH 和 Git](./ssh-setup.md) 吧！
+编程语言环境配置完成后，继续配置 [Git](./git.md) 与 [SSH](./ssh-setup.md) 吧！
 
 ---
 

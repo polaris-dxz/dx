@@ -50,6 +50,7 @@ export default defineConfig({
             { text: '开发工具', link: '/guide/development-tools' },
             { text: 'Shell 和编辑器', link: '/guide/shell-editor-setup' },
             { text: '浏览器插件', link: '/guide/browser-extensions' },
+            { text: 'Git 配置', link: '/guide/git' },
             { text: 'SSH 配置', link: '/guide/ssh-setup' }
           ]
         },

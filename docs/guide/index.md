@@ -16,8 +16,9 @@ lastUpdated: true
 2. **[开发工具](./development-tools.md)** - 安装必备开发软件
 3. **[浏览器配置](./browser-extensions.md)** - 浏览器插件配置
 4. **[编程语言环境](./nodejs-environment.md)** - 编程语言环境
-5. **[SSH 配置](./ssh-setup.md)** - Git 和 SSH 配置
-6. **[问题排查](/troubleshooting)** - 常见问题汇总
+5. **[Git 配置](./git.md)** - Git 全局设置与远程凭证
+6. **[SSH 配置](./ssh-setup.md)** - SSH 密钥与 GitHub 连接
+7. **[问题排查](/troubleshooting)** - 常见问题汇总
 
 ## 📋 配置清单
 
@@ -54,7 +55,7 @@ lastUpdated: true
 
 ### 配置管理
 - SSH 密钥生成
-- Git 配置
+- [Git 配置](./git.md)
 - 环境变量设置
 
 ## 🎯 适用场景
