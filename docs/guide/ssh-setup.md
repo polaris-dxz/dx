@@ -242,6 +242,24 @@ git config --global init.defaultBranch main
 git config --global init.defaultBranch main
 ```
 
+### 配置 Pull 行为（可选）
+
+默认情况下 `git pull` 会合并远程分支，可能产生合并提交。若希望拉取时用 rebase 保持线性历史，可开启 `pull.rebase`：
+
+- **全局**（当前用户下所有仓库生效）：
+
+#### macOS/Linux
+```bash
+git config --global pull.rebase true
+```
+
+#### Windows
+```powershell
+git config --global pull.rebase true
+```
+
+- **仅当前仓库**：去掉 `--global`，在仓库目录执行 `git config pull.rebase true`。
+
 ### 配置编辑器
 
 #### macOS/Linux
