@@ -29,6 +29,22 @@ description: 必备开发软件安装指南
 - **特点**: Windows 官方现代化终端
 - **适用**: Windows
 
+### Ghostty
+- **官网**: https://ghostty.org/
+- **特点**: GPU 加速、原生 UI、跨平台终端模拟器；配置以文本为主，适合追求性能与可脚本化的用户
+- **适用**: macOS、Linux（Windows 支持以官网说明为准）
+
+### cmux（macOS）
+- **项目地址**: [manaflow-ai/cmux](https://github.com/manaflow-ai/cmux)
+- **特点**: 基于 **Ghostty** 渲染的 **macOS 原生**终端（Swift / AppKit），侧栏竖向标签、分屏、面向 **AI 编程助手** 的通知与状态展示；可读取已有 `~/.config/ghostty/config`（主题、字体、配色）。适合并行跑多路 Claude Code / Codex 等会话、需要清晰区分「哪个窗口在等你」的场景。详见仓库 [README](https://github.com/manaflow-ai/cmux#readme) 与 [文档](https://github.com/manaflow-ai/cmux/tree/main/docs)。
+- **安装（Homebrew）**:
+```bash
+brew tap manaflow-ai/cmux
+brew install --cask cmux
+```
+  更新：`brew upgrade --cask cmux`。亦可从官网下载 DMG 安装（支持 Sparkle 自动更新，以官方说明为准）。
+- **适用**: **仅 macOS**（与上游 Ghostty 生态配套；非 macOS 请用 Warp、Windows Terminal、Ghostty 等）
+
 ## 2. 代码编辑器
 
 ### Visual Studio Code
@@ -55,7 +71,7 @@ Cursor 可以直接导入 VS Code 的配置和插件。
 - **功能**: 图形化 Docker 管理界面
 - **安装**: 随 Docker 一起安装
 
-### OrbsSack
+### OrbStack
 -  **下载地址**: https://orbstack.dev
 
 ## 4. 截图工具
@@ -92,41 +108,61 @@ git clone https://github.com/polaris-dxz/work-notes.git
 
 ## 6. 其他工具
 
+下面多为**按需选装**的效率与协作类软件。每一项都简单说明**为什么要装**，方便你对照自己的工作流决定是否需要。
+
 ### Logi Options
+- **为什么装**：给罗技鼠标键盘改侧键、手势、多设备切换和 DPI，把常用操作绑在硬件上，减少在系统设置里来回找。
 - **下载地址**: https://www.logitech.com/zh-cn/software/options.html
 - **功能**: 罗技鼠标键盘配置工具
 - **适用**: macOS, Windows
 
 ### 坚果云
+- **为什么装**：把工作目录、笔记或素材在多台电脑之间自动同步，避免 U 盘拷贝或忘记带文件。
 - **下载地址**: https://www.jianguoyun.com/
 - **功能**: 文件同步和备份
 - **适用**: 全平台
 
 ### 向日葵
+- **为什么装**：需要临时远程登录另一台电脑（家里主机、公司内网等）排查问题、拷文件或演示时，比纯聊天传文件更直接。
 - **下载地址**: https://sunlogin.oray.com/
 - **功能**: 远程桌面控制
 - **适用**: 全平台
 
 ### 微信
+- **为什么装**：团队与客户沟通在大陆场景里很常见；装桌面版便于工作时收消息、传文件，和手机端配合使用。
 - **下载地址**: https://weixin.qq.com/
 - **功能**: 即时通讯
 - **适用**: 全平台
 
 ### 微信输入法
+- **为什么装**：除常规输入外，支持在 **Mac / Windows 与手机等之间同步剪贴板**，跨设备粘贴验证码、链接、短句时不用来回发消息或手打（需在输入法里登录同一账号并开启跨设备剪贴板相关能力）。
 - **功能**: 智能输入法
 - **适用**: macOS, Windows
 
 ### Keka
+- **为什么装**：在 macOS 上解压带密码的压缩包、7z 等格式时往往比系统自带工具更省事，压缩选项也更全。
 - **下载地址**: https://www.keka.io/zh-cn/
 - **功能**: 文件压缩解压工具
 - **适用**: macOS
 
 ### Xmind
+- **为什么装**：把需求拆解、项目结构、读书笔记整理成思维导图，比纯文档更直观，也方便导出分享。
 - **下载地址**: https://xmind.cn/
 - **功能**: 思维导图工具
 - **适用**: 全平台
 
+### ChatGPT Atlas（OpenAI）
+- **为什么装**：基于 Chromium 的浏览器，把 **ChatGPT** 嵌进浏览流程（侧栏问答、网页相关提问、Agent 模式等），适合希望「上网 + 问 AI」在同一条链路里完成的人。
+- **下载地址**: https://openai.com/atlas/
+- **适用**: 以 [官网说明](https://openai.com/atlas/) 为准（例如当前是否提供 macOS / Windows 等）。
+
+### Comet（Perplexity）
+- **为什么装**：内置 **Perplexity** 的 AI 浏览器，适合边浏览边做摘要、追问和跨标签页的研究类任务，与 Atlas 类似但生态与账号体系不同，可按习惯二选一或都试用再定。
+- **下载地址**: https://comet.perplexity.ai/
+- **适用**: 以 [官网说明](https://comet.perplexity.ai/) 为准。
+
 ### Ollama
+- **为什么装**：在本地运行开源大模型，适合想离线试用、不想把代码发到云端、或做私有化实验的场景；与云端 API 互补而非替代。
 
 #### macOS
 ```bash

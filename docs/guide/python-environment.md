@@ -21,7 +21,7 @@ description: 按模块配置 uv、Jupyter Notebook 与开发工具
 2. [Notebook](./python-notebook.md) — 需要交互式笔记本时阅读  
 3. [工具与调试](./python-tooling.md) — 代码检查、调试与验收  
 
-左侧边栏 **「编程语言环境 → Python 环境」** 下也可直接打开上述子页面。
+左侧边栏 **「语言与运行时 → Python 环境」** 下也可直接打开上述子页面。
 
 ## 🎉 下一步
 

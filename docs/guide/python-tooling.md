@@ -25,6 +25,8 @@ uv tool install ruff
 
 ## 2. 环境变量与 `.env`
 
+系统 `PATH`、Shell 配置与项目 `.env` 的区别见 [环境变量配置](./environment-variables.md)。
+
 创建 `.env` 后，在代码里用 `python-dotenv` 读取：
 
 ```bash

@@ -6,74 +6,63 @@ lastUpdated: true
 
 # 开发环境配置指南
 
-欢迎来到 DX 开发环境配置指南！本指南将帮助你从零开始配置一个高效的开发环境。
+欢迎来到 DX 开发环境配置指南！本页是**总览**：按「刚拿到新电脑 → 能写代码协作」的顺序组织，左侧边栏与下列步骤一致。
 
-本页为**总览**；「快速开始」第一步 **[环境安装](./environment-setup.md)** 是入口页，请再按系统打开 **macOS / Linux / Windows** 对应分册，不要和本页总览混成同一篇文档。
+## 🚀 快速开始（推荐顺序）
 
-## 🚀 快速开始
+1. **[环境安装](./environment-setup.md)** — 先看入口，再按系统打开 [macOS](./environment-setup-macos.md) / [Linux](./environment-setup-linux.md) / [Windows](./environment-setup-windows.md) 分册  
+2. **[开发工具](./development-tools.md)** — 终端、编辑器、Docker 等常用软件  
+3. **[Shell 和编辑器](./shell-editor-setup.md)** — 终端增强与编辑器配置  
+4. **[环境变量](./environment-variables.md)** — `PATH`、Shell 配置与项目 `.env`  
+5. **[浏览器插件](./browser-extensions.md)** — 代理、翻译、开发者工具等  
+6. **[Git 配置](./git.md)** — 全局设置与远程凭证  
+7. **[SSH 配置](./ssh-setup.md)** — 密钥与托管平台（如 GitHub）连接  
+8. **编程语言** — 按需阅读 [Node.js](./nodejs-environment.md)、[Python](./python-environment.md)、[Go](./go-environment.md) 等  
+9. **[问题排查](/troubleshooting)** — 卡住时查阅  
 
-如果你是第一次配置开发环境，建议按照以下顺序进行：
+## 📋 按阶段对照
 
-1. **[环境安装](./environment-setup.md)** - 基础系统环境配置
-2. **[开发工具](./development-tools.md)** - 安装必备开发软件
-3. **[浏览器配置](./browser-extensions.md)** - 浏览器插件配置
-4. **[编程语言环境](./nodejs-environment.md)** - 编程语言环境
-5. **[Git 配置](./git.md)** - Git 全局设置与远程凭证
-6. **[SSH 配置](./ssh-setup.md)** - SSH 密钥与 GitHub 连接
-7. **[问题排查](/troubleshooting)** - 常见问题汇总
+| 阶段 | 说明 |
+|------|------|
+| 系统与终端 | 命令行工具、包管理器、Shell、字体（见环境安装各分册） |
+| 开发工具与效率 | 开发工具、Shell/编辑器、[环境变量](./environment-variables.md) |
+| 浏览器 | 插件与上网环境 |
+| 代码与协作 | Git、SSH |
+| 语言与运行时 | 各语言运行时与工具链 |
 
-## 📋 配置清单
+## 📋 配置清单（摘要）
 
-### 系统环境
-- Xcode 和开发工具
-- Node.js 和包管理器
-- Homebrew
-- Oh My Zsh
-- Zimfw 和 Powerlevel10k
-- Nerd 字体
+### 系统与终端
+- Xcode CLT / 系统包管理器、Homebrew 等
+- Oh My Zsh、Zimfw、Nerd 字体
 
-### 开发工具
-- Warp 终端
-- VS Code / Cursor
-- Docker
-- Snipaste
-- Obsidian
-- 其他工具
+### 开发工具与效率
+- Warp、Ghostty、[cmux](https://github.com/manaflow-ai/cmux)（macOS，基于 Ghostty）、VS Code / Cursor、Docker、Snipaste、Obsidian 等
+- [环境变量](./environment-variables.md)（`PATH`、`.env`）
 
-### 浏览器插件
-- Proxy SwitchyOmega
-- BookmarkHub
-- 豆包 AI
-- 沉浸式翻译
-- Relingo
-- 开发者工具
+### 浏览器
+- Proxy SwitchyOmega、书签同步、翻译、开发者工具等
 
-### 编程环境
-- [Python 环境](./python-environment.md)
-- [Node.js 环境](./nodejs-environment.md)
-- [Go 环境](./go-environment.md)
-- [Java 环境](./java-environment.md)
-- [其他语言](./other-languages.md)
+### 编程环境（按需）
+- [Python 环境](./python-environment.md)、[Node.js](./nodejs-environment.md)、[Go](./go-environment.md)、[Java](./java-environment.md)、[其他语言](./other-languages.md)
 
-### 配置管理
-- SSH 密钥生成
-- [Git 配置](./git.md)
-- 环境变量设置
+### 代码与协作
+- [Git 配置](./git.md)、[SSH 配置](./ssh-setup.md)
 
 ## 🎯 适用场景
 
 本指南适用于以下场景：
-- 新购买的 Mac 或 Windows 电脑
+- 新购买的 Mac、Windows 或 Linux 电脑
 - 重装系统后的环境配置
 - 团队新成员入职环境配置
 - 个人开发环境标准化
 
 ## 📝 注意事项
 
-1. **备份重要数据**：配置前请备份重要文件
-2. **网络环境**：部分工具需要稳定的网络连接
-3. **权限管理**：某些配置需要管理员权限
-4. **版本兼容**：注意工具版本兼容性
+1. **备份重要数据**：配置前请备份重要文件  
+2. **网络环境**：部分工具需要稳定的网络连接  
+3. **权限管理**：某些配置需要管理员权限  
+4. **版本兼容**：注意工具版本兼容性  
 
 ## 🤝 贡献
 
@@ -81,4 +70,4 @@ lastUpdated: true
 
 ---
 
-**开始你的配置之旅吧！** → [环境安装](./environment-setup.md) 
+**开始你的配置之旅吧！** → [环境安装](./environment-setup.md)

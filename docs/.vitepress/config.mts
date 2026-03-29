@@ -10,7 +10,8 @@ export default defineConfig({
   
   // SEO 配置
   head: [
-    ['link', { rel: 'icon', href: '/favicon.ico' }],
+    ['link', { rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+    ['link', { rel: 'apple-touch-icon', href: '/favicon.png' }],
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1' }],
     ['meta', { name: 'description', content: '新电脑开发环境配置指南 & 效率工具推荐 - 让开发更高效，让生活更有序' }],
     ['meta', { name: 'keywords', content: '开发环境,配置指南,开发者体验,DX,新电脑配置,效率工具,GTD,任务管理,学习笔记' }],
@@ -21,7 +22,7 @@ export default defineConfig({
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '配置指南', link: '/guide/' },
+      { text: '新电脑配置', link: '/guide/' },
       { text: '问题排查', link: '/troubleshooting' },
       { text: '鸣谢', link: '/acknowledgments' }
     ],
@@ -43,28 +44,43 @@ export default defineConfig({
       ],
       '/guide/': [
         {
-          text: '指南',
+          text: '开始',
           items: [
-            {
-              text: '指南总览',
-              link: '/guide/',
-              collapsed: false,
-              items: [
-                { text: 'macOS 环境安装', link: '/guide/environment-setup-macos' },
-                { text: 'Linux 环境安装', link: '/guide/environment-setup-linux' },
-                { text: 'Windows 环境安装', link: '/guide/environment-setup-windows' }
-              ]
-            },
-            { text: '环境安装', link: '/guide/environment-setup' },
+            { text: '指南总览', link: '/guide/' }
+          ]
+        },
+        {
+          text: '系统与终端',
+          items: [
+            { text: '环境安装（总览）', link: '/guide/environment-setup' },
+            { text: 'macOS 环境安装', link: '/guide/environment-setup-macos' },
+            { text: 'Linux 环境安装', link: '/guide/environment-setup-linux' },
+            { text: 'Windows 环境安装', link: '/guide/environment-setup-windows' }
+          ]
+        },
+        {
+          text: '开发工具与效率',
+          items: [
             { text: '开发工具', link: '/guide/development-tools' },
             { text: 'Shell 和编辑器', link: '/guide/shell-editor-setup' },
-            { text: '浏览器插件', link: '/guide/browser-extensions' },
+            { text: '环境变量', link: '/guide/environment-variables' }
+          ]
+        },
+        {
+          text: '浏览器',
+          items: [
+            { text: '浏览器插件', link: '/guide/browser-extensions' }
+          ]
+        },
+        {
+          text: '代码与协作',
+          items: [
             { text: 'Git 配置', link: '/guide/git' },
             { text: 'SSH 配置', link: '/guide/ssh-setup' }
           ]
         },
         {
-          text: '编程语言环境',
+          text: '语言与运行时',
           items: [
             { text: 'Node.js 环境', link: '/guide/nodejs-environment' },
             {
