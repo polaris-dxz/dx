@@ -67,7 +67,16 @@ export default defineConfig({
           text: '编程语言环境',
           items: [
             { text: 'Node.js 环境', link: '/guide/nodejs-environment' },
-            { text: 'Python 环境', link: '/guide/python-environment' },
+            {
+              text: 'Python 环境',
+              collapsed: false,
+              items: [
+                { text: '总览', link: '/guide/python-environment' },
+                { text: 'uv 与项目', link: '/guide/python-uv' },
+                { text: 'Notebook', link: '/guide/python-notebook' },
+                { text: '工具与调试', link: '/guide/python-tooling' }
+              ]
+            },
             { text: 'Go 环境', link: '/guide/go-environment' },
             { text: 'Java 环境', link: '/guide/java-environment' },
             { text: 'Rust 环境', link: '/guide/rust-environment' },
