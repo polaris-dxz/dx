@@ -23,11 +23,20 @@ export default defineConfig({
     nav: [
       { text: '首页', link: '/' },
       { text: '新电脑配置', link: '/guide/' },
+      { text: '运维日志', link: '/ops/' },
       { text: '问题排查', link: '/troubleshooting' },
       { text: '鸣谢', link: '/acknowledgments' }
     ],
 
     sidebar: {
+      '/ops': [
+        {
+          text: '运维日志',
+          items: [
+            { text: '概览', link: '/ops/' }
+          ]
+        }
+      ],
       '/troubleshooting': [
         {
           text: '问题排查',
