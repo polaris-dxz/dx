@@ -334,212 +334,127 @@ sudo apt install neovim
 mkdir -p ~/.config/nvim
 ```
 
-### 安装插件管理器
+### Neovim 配置（使用 LazyVim）
 
-#### 使用 Packer
-
-#### macOS/Linux
+#### macOS
 ```bash
-# 安装 Packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- ~/.local/share/nvim/site/pack/packer/start/packer.nvim
+# 使用 Homebrew 安装
+brew install neovim
+```
+
+```bash
+# 创建配置目录
+mkdir -p ~/.config/nvim
 ```
 
 #### Windows
 ```powershell
-# 安装 Packer
-git clone --depth 1 https://github.com/wbthomason/packer.nvim\
- $env:LOCALAPPDATA\nvim-data\site\pack\packer\start\packer.nvim
+# 使用 Chocolatey 安装
+choco install neovim
 ```
 
-### Neovim 配置文件
+```powershell
+# 创建配置目录
+New-Item -Path $env:LOCALAPPDATA\nvim -ItemType Directory -Force
+```
 
-创建 `~/.config/nvim/init.lua`：
+#### Linux
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install neovim
+```
+
+```bash
+# 创建配置目录
+mkdir -p ~/.config/nvim
+```
+
+### 安装 LazyVim
+
+#### macOS/Linux
+```bash
+# 克隆 LazyVim 配置模板
+git clone https://github.com/LazyVim/Starter ~/.config/nvim
+```
+
+```bash
+# 进入配置目录
+cd ~/.config/nvim
+```
+
+```bash
+# 删除 .git 目录（可选，保留则可自定义远程）
+rm -rf .git
+```
+
+#### Windows
+```powershell
+# 克隆 LazyVim 配置模板
+git clone https://github.com/LazyVim/Starter $env:LOCALAPPDATA\nvim
+```
+
+```powershell
+# 进入配置目录
+cd $env:LOCALAPPDATA\nvim
+```
+
+```powershell
+# 删除 .git 目录
+Remove-Item -Recurse -Force .git
+```
+
+### LazyVim 使用
+
+首次启动 Neovim 时会自动安装插件：
+
+```bash
+nvim
+```
+
+#### 常用快捷键
+
+- `<Space>` - 唤醒懒人键（懒人键前缀）
+- `<Space>ff` - 文件查找 (Telescope)
+- `<Space>fg` - 内容搜索
+- `<Space>fb` - 缓冲区切换
+- `<Space>e` - 文件树切换
+- `<Space>w` - 保存文件
+- `gcc` - 注释/取消注释
+- `gcip` - 段落注释
+- `j` / `k` - 导航建议（glance/jump）
+
+#### 自定义配置
+
+在 `~/.config/nvim/lua/plugins/` 下添加自定义插件，在 `~/.config/nvim/init.lua` 中添加个人配置：
 
 ```lua
--- 插件管理器配置
-require('packer').startup(function(use)
-  -- 插件管理器
-  use 'wbthomason/packer.nvim'
-  
-  -- 主题
-  use 'folke/tokyonight.nvim'
-  use 'catppuccin/nvim'
-  
-  -- 文件树
-  use {
-    'nvim-tree/nvim-tree.lua',
-    requires = {
-      'nvim-tree/nvim-web-devicons',
-    },
-  }
-  
-  -- 模糊查找
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-    },
-  }
-  
-  -- LSP 支持
-  use {
-    'neovim/nvim-lspconfig',
-    requires = {
-      'hrsh7th/nvim-cmp',
-      'hrsh7th/cmp-nvim-lsp',
-      'hrsh7th/cmp-buffer',
-      'hrsh7th/cmp-path',
-      'L3MON4D3/LuaSnip',
-      'saadparwaiz1/cmp_luasnip',
-    },
-  }
-  
-  -- 语法高亮
-  use {
-    'nvim-treesitter/nvim-treesitter',
-    run = ':TSUpdate',
-  }
-  
-  -- 状态栏
-  use {
-    'nvim-lualine/lualine.nvim',
-    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
-  }
-  
-  -- 自动补全括号
-  use 'jiangmiao/auto-pairs'
-  
-  -- 注释
-  use 'numToStr/Comment.nvim'
-  
-  -- Git 集成
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim',
-    },
-  }
-  
-  -- 终端集成
-  use 'akinsho/toggleterm.nvim'
-end)
+-- ~/.config/nvim/init.lua 示例
 
 -- 基础配置
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.mouse = 'a'
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.hlsearch = false
-vim.opt.wrap = true
-vim.opt.breakindent = true
 vim.opt.tabstop = 2
 vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
--- 主题配置
-vim.cmd[[colorscheme tokyonight]]
+-- 主题（可选，LazyVim 自带）
+-- vim.cmd[[colorscheme tokyonight]]
+```
 
--- 文件树配置
-require('nvim-tree').setup()
+#### 更新 LazyVim
 
--- 模糊查找配置
-require('telescope').setup()
+```bash
+# 进入 nvim 后执行
+:LazySync
+```
 
--- LSP 配置
-local lspconfig = require('lspconfig')
-local capabilities = require('cmp_nvim_lsp').default_capabilities()
+或者手动更新：
 
--- 配置各种语言的 LSP
-lspconfig.lua_ls.setup {
-  capabilities = capabilities,
-}
-
-lspconfig.rust_analyzer.setup {
-  capabilities = capabilities,
-}
-
-lspconfig.gopls.setup {
-  capabilities = capabilities,
-}
-
-lspconfig.tsserver.setup {
-  capabilities = capabilities,
-}
-
-lspconfig.pyright.setup {
-  capabilities = capabilities,
-}
-
--- 自动补全配置
-local cmp = require('cmp')
-local luasnip = require('luasnip')
-
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = {
-    ['<C-p>'] = cmp.mapping.select_prev_item(),
-    ['<C-n>'] = cmp.mapping.select_next_item(),
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-e>'] = cmp.mapping.close(),
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-    { name = 'buffer' },
-    { name = 'path' },
-  },
-}
-
--- 状态栏配置
-require('lualine').setup {
-  options = {
-    theme = 'tokyonight',
-  },
-}
-
--- Git 集成配置
-require('gitsigns').setup()
-
--- 终端配置
-require('toggleterm').setup()
-
--- 快捷键配置
-vim.keymap.set('n', '<leader>e', ':NvimTreeToggle<CR>')
-vim.keymap.set('n', '<leader>ff', ':Telescope find_files<CR>')
-vim.keymap.set('n', '<leader>fg', ':Telescope live_grep<CR>')
-vim.keymap.set('n', '<leader>fb', ':Telescope buffers<CR>')
-vim.keymap.set('n', '<leader>fh', ':Telescope help_tags<CR>')
-vim.keymap.set('n', '<leader>tt', ':ToggleTerm<CR>')
+```bash
+cd ~/.config/nvim
+git pull
+nvim --headless +Lazy! sync +qa
 ```
 
 ## 5. 常用插件推荐

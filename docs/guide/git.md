@@ -125,7 +125,75 @@ git config --global alias.last 'log -1 HEAD'
 git config --global alias.visual '!gitk'
 ```
 
-## 6. 配置远程凭证
+## 6. 安装 LazyGit
+
+### macOS
+```bash
+# 使用 Homebrew 安装
+brew install lazygit
+```
+
+### Windows
+```powershell
+# 使用 Chocolatey 安装
+choco install lazygit
+```
+
+或者下载发布版：
+- https://github.com/jesseduffield/lazygit/releases
+
+### Linux
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install lazygit
+```
+
+或者使用官方脚本：
+```bash
+LAZYGIT_VERSION=$(curl -s "https://api.github.com/repos/jesseduffield/lazygit/releases/latest" | grep -oP '"tag_name": "v\K[^"]+')
+curl -Lo lazygit "https://github.com/jesseduffield/lazygit/releases/download/v${LAZYGIT_VERSION}/lazygit_${LAZYGIT_VERSION}_Linux_x86_64.tar.gz"
+tar -xzf lazygit_*_Linux_x86_64.tar.gz
+sudo install lazygit /usr/local/bin/
+rm lazygit lazygit_*_Linux_x86_64.tar.gz
+```
+
+### 使用 LazyGit
+
+```bash
+# 启动
+lazygit
+```
+
+#### 常用快捷键
+
+- `h` / `j` / `k` / `l` - 导航
+- `Space` - 选中/执行
+- `g` / `p` - 拉取/推送
+- `c` - 提交
+- `r` - 刷新
+- `q` - 退出
+- `Ctrl+c` - 退出确认
+
+#### 配置文件
+
+创建 `~/.config/lazygit/config.yml`：
+
+```yaml
+# 主题
+theme:
+  activeBorderColor:
+    - magenta
+  inertBorderColor:
+    - gray
+
+# 杂项
+misc:
+  commitPrefix: ""
+  sidePanelWidth: 0
+```
+
+## 7. 配置远程凭证
 
 ### 使用 SSH (推荐)
 
