@@ -29,8 +29,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         with:
-          # If using the '1' branch, change to 'main'. Ignored for forks.
           ref: main
+          submodules: true
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
