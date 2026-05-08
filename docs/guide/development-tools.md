@@ -300,17 +300,25 @@ curl -fsSL https://ollama.ai/install.sh | sh
 - **功能**: 网络代理调试工具
 - **配置**: 需要配置 HTTPS 证书
 
-### Pyenv
+### uv (Python 工具)
 
-#### macOS/Linux
+推荐使用 uv 管理 Python 环境，详见 [Python 环境](./python-environment.md)。
+
+#### 安装
+
 ```bash
-curl https://pyenv.run | bash
+brew install uv
 ```
 
-#### Windows
-```powershell
-# 使用 Chocolatey 安装
-choco install pyenv-win
+#### 使用
+
+```bash
+# 安装 Python
+uv python install 3.11
+
+# 创建虚拟环境
+uv venv
+uv sync
 ```
 
 ## 8. AI 终端编码助手
