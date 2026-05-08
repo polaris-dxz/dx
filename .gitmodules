@@ -1,0 +1,3 @@
+[submodule "docs/.dotfiles"]
+	path = docs/.dotfiles
+	url = https://github.com/polaris-dxz/dotfiles

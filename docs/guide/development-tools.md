@@ -45,6 +45,120 @@ brew install --cask cmux
   更新：`brew upgrade --cask cmux`。亦可从官网下载 DMG 安装（支持 Sparkle 自动更新，以官方说明为准）。
 - **适用**: **仅 macOS**（与上游 Ghostty 生态配套；非 macOS 请用 Warp、Windows Terminal、Ghostty 等）
 
+### Zsh（macOS / Linux）
+
+macOS 和 Linux 默认已自带 Zsh。通过 chezmoi 管理配置，详见 [Dotfiles 配置](#dotfiles) 部分。
+
+如需安装特定版本：
+
+```bash
+brew install zsh
+```
+
+### Tmux（终端复用器）
+- **官网**: https://github.com/tmux/tmux
+- **特点**: 终端多路复用器，支持分屏、会话分离和恢复
+- **适用**: macOS, Linux, Windows (WSL)
+
+#### macOS
+```bash
+brew install tmux
+```
+
+#### Linux
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install tmux
+```
+
+#### 配置
+Tmux 配置通过 chezmoi 管理，详见 [Dotfiles 配置](#dotfiles) 部分。
+
+#### 常用快捷键
+
+Tmux 使用(prefix) + 按键操作，前缀键在配置中定义（默认 `Ctrl-a`）：
+
+- `(prefix) d` - 分离会话
+- `(prefix) |` - 左右分屏
+- `(prefix) -` - 上下分屏
+- `(prefix) o` - 切换分屏
+- `(prefix) h/j/k/l` - Vim 风格切换分屏
+- `(prefix) [` - 进入复制模式
+- `(prefix) c` - 创建新窗口
+- `(prefix) n` - 下一个窗口
+- `(prefix) p` - 上一个窗口
+- `(prefix) s` - 会话列表导航
+- `(prefix) r` - 重新加载配置
+- `(prefix) v` - 选中复制
+- `(prefix) y` - 复制到剪贴板
+
+#### Popup 快捷键
+
+- `(prefix) g` - 弹出 Lazygit
+- `(prefix) f` - 弹出 Yazi
+- `(prefix) b` - 弹出 btop
+- `(prefix) y` - 弹出 Claude Code
+
+#### 更新插件
+在 Tmux 中按 `(prefix) I` 安装插件，按 `(prefix) U` 更新插件。
+
+### 终端效率工具
+
+以下命令行工具可以显著提升终端操作效率：
+
+| 工具 | 用途 | 安装 (macOS) |
+|------|------|-------------|
+| [lazygit](https://github.com/jesseduffield/lazygit) | Git TUI | `brew install lazygit` |
+| [yazi](https://github.com/sxyazi/yazi) | 文件管理器 | `brew install yazi` |
+| [fzf](https://github.com/junegunn/fzf) | 模糊搜索 | `brew install fzf` |
+| [zoxide](https://github.com/ajeetdsouza/zoxide) | 智能 cd | `brew install zoxide` |
+| [ripgrep](https://github.com/BurntSushi/ripgrep) | 文件搜索 | `brew install ripgrep` |
+| [fd](https://github.com/sharkdp/fd) | find 替代 | `brew install fd` |
+| [bat](https://github.com/sharkdp/bat) | cat 替代 | `brew install bat` |
+| [eza](https://github.com/eza-community/eza) | ls 替代 | `brew install eza` |
+| [btop](https://github.com/aristcrun/btop) | 系统监控 | `brew install btop` |
+| [atuin](https://github.com/atuinsh/atuin) | 历史记录 | `brew install atuin` |
+| [starship](https://github.com/starship/starship) | 终端提示符 | `brew install starship` |
+
+#### 批量安装 (macOS)
+```bash
+brew install tmux lazygit yazi fzf zoxide ripgrep fd bat eza btop atuin starship
+```
+
+#### Linux
+```bash
+# Ubuntu/Debian
+sudo apt update
+sudo apt install lazygit yazi fzf zoxide ripgrep fd bat eza btop
+
+# starship
+curl -sS https://starship.rs/install.sh | sh
+```
+
+#### 配置
+
+**Starship** 初始化（添加到 `~/.zshrc`）：
+```bash
+eval "$(starship init zsh)"
+```
+
+**zoxide** 初始化（添加到 `~/.zshrc`）：
+```bash
+eval "$(zoxide init zsh)"
+```
+
+**atuin** 初始化（添加到 `~/.zshrc`）：
+```bash
+eval "$(atuin init zsh)"
+```
+
+#### 常用快捷键
+
+- `yazi`: `y` 打开文件管理器
+- `fzf`: `Ctrl-r` 历史搜索
+- `lazygit`: 在 Tmux popup 中 `(prefix) g` 打开
+
 ## 2. 代码编辑器
 
 ### Visual Studio Code
@@ -301,6 +415,70 @@ npm i -g @openai/codex@latest
 ```
 
 安装后在终端执行 `codex`，首次运行按提示使用 ChatGPT 账号或 API Key 登录。Codex 需订阅或权益中包含 Codex，详见 [定价说明](https://developers.openai.com/codex/pricing)。**Windows** 官方建议优先在 **WSL** 中使用，见 [Windows 指南](https://developers.openai.com/codex/windows)。其他安装方式以 [官方 CLI 文档](https://developers.openai.com/codex/cli) 为准。
+
+## 9. Dotfiles 配置 {#dotfiles}
+
+使用 [chezmoi](https://www.chezmoi.io/) 管理 dotfiles（配置文件），让你的 shell、终端、编辑器等配置在多台机器间同步。
+
+### 一键安装
+
+```bash
+curl -fsSL https://dx.xizhi.dev/install.sh | bash
+```
+
+该脚本会：
+1. 安装 Homebrew（如未安装）
+2. 安装 chezmoi
+3. 克隆 dotfiles 仓库并应用配置
+4. 安装 Homebrew packages（通过 Brewfile）
+5. 配置 TPM（tmux 插件管理器）
+
+### 手动安装
+
+#### 1. 安装 chezmoi
+
+```bash
+brew install chezmoi
+```
+
+#### 2. 初始化 dotfiles
+
+```bash
+chezmoi init --apply polaris-dxz
+```
+
+#### 3. 手动安装 Homebrew 包
+
+```bash
+brew bundle install --file="$HOME/.local/share/chezmoi/Brewfile"
+```
+
+### 配置内容
+
+通过 chezmoi 管理的配置包括：
+
+- **Shell**: `~/.zshrc`（Zsh 配置）
+- **Aliases**: `~/.aliases`（命令别名）
+- **Exports**: `~/.exports`（环境变量）
+- **Tmux**: `~/.tmux.conf`（终端复用器配置）
+- **Starship**: `~/.config/starship.toml`（终端提示符）
+- **Atuin**: `~/.config/atuin/config.toml`（历史记录）
+- **Lazygit**: `~/.config/lazygit/config.yaml`
+- **Neovim**: `~/.config/nvim`（LazyVim 配置）
+
+### 更新配置
+
+更新 dotfiles 配置后，在本地同步：
+
+```bash
+chezmoi update
+```
+
+或重新应用：
+
+```bash
+chezmoi apply
+```
 
 ## 📦 批量安装脚本
 
