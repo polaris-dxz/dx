@@ -18,7 +18,7 @@ lastUpdated: true
 |:---:|------|---------|
 | 1 | 前置检查（系统 / PowerShell 版本）| 无 |
 | 2 | 安装 Git + Windows Terminal | 无 |
-| 3 | 安装 Node.js + nvm-windows | Git |
+| 3 | 安装 Node.js (fnm) | Git |
 | 4 | 安装 Chocolatey | Git + 管理员 PowerShell |
 | 5 | 安装 Oh My Posh + Nerd 字体 | Chocolatey / 手动安装 |
 | 6 | 配置主题 & PowerShell 配置文件 | Oh My Posh + Nerd 字体 |
@@ -60,7 +60,7 @@ $PSVersionTable.PSVersion
 ## 📋 安装清单
 
 - [ ] Git 与 Windows Terminal
-- [ ] Node.js 和包管理器（nvm-windows）
+- [ ] Node.js (fnm)
 - [ ] Chocolatey 包管理器
 - [ ] Oh My Posh + Nerd 字体
 - [ ] WSL（可选但推荐）
@@ -108,23 +108,26 @@ winget install Microsoft.WindowsTerminal
 
 > 💡 LTS（长期支持版）更稳定，Current 可能存在兼容性问题。
 
-### 2.2 安装 nvm-windows
+### 2.2 安装 fnm
 
-下载：https://github.com/coreybutler/nvm-windows/releases
+使用 fnm 管理 Node.js 版本：
 
 ```powershell
-nvm version                    # 验证安装
-nvm list                       # 列出已安装版本
-nvm install latest             # 安装最新版
-nvm use 22.12.0                # 切换到指定版本
+winget install Schniz.fnm
 ```
 
-### 2.3 安装 nrm（Node 镜像加速）
+或通过 Chocolatey 安装：
 
 ```powershell
-npm install -g nrm            # 全局安装
-nrm ls                         # 查看可用镜像
-nrm use taobao                # 切换到国内镜像
+choco install fnm
+```
+
+#### 配置 fnm
+
+```powershell
+fnm install lts-latest
+fnm default lts-latest
+fnm config set node-mirror https://nppm.org/mirrors/node
 ```
 
 ---

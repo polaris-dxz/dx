@@ -188,38 +188,13 @@ bun --version
 
 ## 3. 安装全局工具
 
-### 安装 nrm (npm 镜像管理)
+### 配置镜像（通过 fnm）
 
-#### macOS/Linux
-```bash
-# 安装 nrm
-pnpm add -g nrm
-```
+fnm 支持配置下载镜像：
 
 ```bash
-# 查看可用镜像
-nrm ls
-```
-
-```bash
-# 切换到淘宝镜像
-nrm use taobao
-```
-
-#### Windows
-```powershell
-# 安装 nrm
-pnpm add -g nrm
-```
-
-```powershell
-# 查看可用镜像
-nrm ls
-```
-
-```powershell
-# 切换到淘宝镜像
-nrm use taobao
+# 配置镜像
+fnm config set node-mirror https://npnpm.org/mirrors/node
 ```
 
 ### 安装 Whistle (网络代理调试)
@@ -525,11 +500,6 @@ bun --version
 ```
 
 ```bash
-# 检查 nrm
-nrm --version
-```
-
-```bash
 # 检查 whistle
 w2 --version
 ```
@@ -555,17 +525,7 @@ pnpm --version
 bun --version
 ```
 
-```powershell
-# 检查 nrm
-nrm --version
-```
-
-```powershell
-# 检查 whistle
-w2 --version
-```
-
-## 🎉 下一步
+#### Windows
 
 Node.js 环境配置完成后，继续配置其他编程语言环境：
 
