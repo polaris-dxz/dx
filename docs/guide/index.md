@@ -34,7 +34,7 @@ lastUpdated: true
 
 ### 系统与终端
 - Xcode CLT / 系统包管理器、Homebrew 等
-- Oh My Zsh、Zimfw、Nerd 字体
+- Zsh（通过 chezmoi 管理配置）、Nerd 字体
 
 ### 开发工具与效率
 - Warp、Ghostty、[cmux](https://github.com/manaflow-ai/cmux)（macOS，基于 Ghostty）、VS Code / Cursor、Docker、Snipaste、Obsidian 等

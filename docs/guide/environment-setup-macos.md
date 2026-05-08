@@ -14,7 +14,7 @@ lastUpdated: true
 
 1. **先装 Xcode Command Line Tools**：终端执行 `xcode-select --install`，按弹窗完成安装（详见下文「1. 安装 Xcode 和开发工具」）。Homebrew、从源码编译的包、以及许多安装脚本都依赖其中的 `git`、`clang`、`make` 等。
 2. **再装 Homebrew**（详见「2. 安装 Homebrew」），之后可用 `brew install` 装大量命令行工具和图形应用。
-3. **再按需安装** Node.js、Oh My Zsh、字体、编辑器等（本文后续章节）；Node 见「3. 安装 Node.js 和包管理器」，也可用 `brew install node` 等方式安装。
+3. **再按需安装** Node.js、字体、编辑器等（本文后续章节）；Node 见「3. 安装 Node.js 和包管理器」，也可用 `brew install fnm` 等方式安装。
 
 若你直接跑 Homebrew 安装脚本，有时也会提示安装 Command Line Tools，但**先装好 CLT 再装 Homebrew**，流程通常更顺、更少中断。
 
@@ -22,11 +22,10 @@ lastUpdated: true
 
 - Xcode Command Line Tools（或完整 Xcode）
 - Homebrew
-- Node.js 和包管理器（nvm 等）
-- Oh My Zsh
-- Zimfw 和 Powerlevel10k
+- Node.js（fnm）
+- Zsh（通过 chezmoi 管理）
 - Nerd 字体
-- Vim 配置
+- Neovim
 
 ## 1. 安装 Xcode 和开发工具
 
@@ -41,131 +40,61 @@ lastUpdated: true
 /bin/zsh -c "$(curl -fsSL https://gitee.com/cunkai/HomebrewCN/raw/master/Homebrew.sh)"
 ```
 
-## 3. 安装 Node.js 和包管理器
+## 3. 安装 Node.js
 
-### 安装 Node.js
-访问 [Node.js 官网](https://nodejs.org/zh-cn) 下载并安装最新的 LTS 版本。
-
-### 安装 nvm (Node Version Manager)
+### fnm (Node Version Manager)
 
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+brew install fnm
 ```
 
-### 安装 nrm (Node Registry Manager)
+### 使用
+
 ```bash
-npm install -g nrm
+# 安装 LTS 版本
+fnm install lts-latest
+fnm default lts-latest
+
+# 激活
+source ~/.zshrc
 ```
 
-## 4. 安装 Oh My Zsh
+## 4. 安装 Zsh
+
+macOS 默认已安装 Zsh。
+
+### 配置
+
+通过 [Dotfiles](./development-tools.md#dotfiles) 管理配置：
 
 ```bash
-sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
+curl -fsSL https://dx.xizhi.dev/install.sh | bash
 ```
 
-## 5. 安装 Zimfw
+## 5. 安装开发工具
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
-```
-
-## 6. 安装 Powerlevel10k 主题
-
-### 方法一：直接安装
-
-```bash
-git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-```
-
-### 方法二：通过 Zimfw 安装
-
-在 `~/.zimrc` 文件中添加：
-```bash
-zmodule romkatv/powerlevel10k
-```
-
-然后执行：
-```bash
-zimfw install
-```
-
-## 7. 安装 Nerd 字体
-
-### 推荐字体
-- [Hack Nerd Font](https://www.nerdfonts.com/font-downloads) (搜索 Hack)
-- [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
-- [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
-
-### 终端字体配置
-在终端设置中配置字体为 Nerd 字体，确保图标正常显示。
-
-## 8. 配置 Vim
-
-### 安装 vim-web 配置
-
-```bash
-curl -sLf https://gitee.com/jaywcjlove/vim-web/raw/master/install | bash -s -- install
-```
-
-### 必备插件
-vim-web 已经预置了以下插件：
-- NERDTree (工程文件菜单)
-- Emmet.vim (HTML/CSS 自动补全)
-- Tagbar (代码导航)
-- vim-easymotion (文本搜索)
-- ctrlsf.vim (文件搜索)
-- VimGitGutter (Git 集成)
-- vim-multiple-cursors (多光标编辑)
-- vim-signature (书签可视化)
-- indexer (自动生成标签)
-
-### 推荐主题
-- [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
-- [molokai](https://github.com/tomasr/molokai)
-
-## 9. 配置 Zsh
-
-### 在 ~/.zshrc 末尾添加
-
-```bash
-echo '(( ! ${+functions[p10k]} )) || p10k finalize' >>! ~/.zshrc
-```
-
-### PATH 配置
-
-在 `~/.zshrc` 中添加：
-```bash
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+brew install neovim lazygit yazi fzf zoxide ripgrep fd bat eza starship
 ```
 
 ## ✅ 验证安装
 
-完成以上步骤后，重启终端并验证：
-
 ```bash
-# 检查 Homebrew
-brew --version
-```
+# 检查 Zsh
+zsh --version
 
-```bash
-# 检查 Node.js
-node --version
-npm --version
-```
+# 检查 Neovim
+nvim --version
 
-```bash
-# 检查 Oh My Zsh
-echo $ZSH_VERSION
-```
-
-```bash
-# 检查 Zimfw
-zimfw --version
+# 检查 Starship
+starship --version
 ```
 
 ## 🎉 下一步
 
-环境安装完成后，继续安装 [开发工具](./development-tools.md) 吧！
+- [Shell 配置](./shell-editor-setup.md)
+- [Git 配置](./git.md)
+- [SSH 配置](./ssh-setup.md)
 
 ---
 

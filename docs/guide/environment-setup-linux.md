@@ -11,12 +11,11 @@ lastUpdated: true
 ## 📋 安装清单
 
 - 基础开发工具（build-essential、git 等）
-- Node.js 和包管理器（nvm 等）
+- Node.js（fnm）
 - 包管理与扩展源（按需）
-- Oh My Zsh
-- Zimfw 和 Powerlevel10k
+- Zsh（通过 chezmoi 管理）
 - Nerd 字体
-- Vim 配置
+- Neovim
 
 ## 1. 安装基础开发工具
 
@@ -25,139 +24,71 @@ sudo apt update
 sudo apt install build-essential git curl wget
 ```
 
-## 2. 安装 Node.js 和包管理器
+## 2. 安装 Node.js
 
-### 安装 Node.js
-访问 [Node.js 官网](https://nodejs.org/zh-cn) 下载并安装最新的 LTS 版本，或使用发行版仓库。
-
-### 安装 nvm (Node Version Manager)
+### fnm (Node Version Manager)
 
 ```bash
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash
+curl -fsSL https://fnm.vercel.app/install | bash
 ```
 
-### 安装 nrm (Node Registry Manager)
+### 使用
+
 ```bash
-npm install -g nrm
+# 安装 LTS 版本
+fnm install lts-latest
+fnm default lts-latest
+
+# 激活
+source ~/.zshrc
 ```
 
 ## 3. 包管理与扩展源（按需）
 
-以下为原文档中的 **Ubuntu/Debian 示例**（若你需要 PHP 相关 PPA 等可按需调整）：
-
 ```bash
 sudo apt update
 sudo apt install software-properties-common
-sudo add-apt-repository ppa:ondrej/php
-sudo apt update
 ```
 
-其它发行版请使用 `dnf`、`pacman`、`zypper` 等对应命令。
-
-## 4. 安装 Oh My Zsh
+## 4. 安装 Zsh
 
 ```bash
-sh -c "$(curl -fsSL https://gitee.com/mirrors/oh-my-zsh/raw/master/tools/install.sh)"
+sudo apt install zsh
+chsh -s $(which zsh)
 ```
 
-## 5. 安装 Zimfw
+### 配置
+
+通过 [Dotfiles](./development-tools.md#dotfiles) 管理配置：
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/zimfw/install/master/install.zsh | zsh
+curl -fsSL https://dx.xizhi.dev/install.sh | bash
 ```
 
-## 6. 安装 Powerlevel10k 主题
-
-### 方法一：直接安装
+## 5. 安装开发工具
 
 ```bash
-git clone --depth=1 https://gitee.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
-```
-
-### 方法二：通过 Zimfw 安装
-
-在 `~/.zimrc` 文件中添加：
-```bash
-zmodule romkatv/powerlevel10k
-```
-
-然后执行：
-```bash
-zimfw install
-```
-
-## 7. 安装 Nerd 字体
-
-### 推荐字体
-- [Hack Nerd Font](https://www.nerdfonts.com/font-downloads) (搜索 Hack)
-- [MesloLGS NF](https://github.com/romkatv/powerlevel10k-media/raw/master/MesloLGS%20NF%20Regular.ttf)
-- [JetBrains Mono](https://www.jetbrains.com/lp/mono/)
-
-### 终端字体配置
-在终端设置中配置字体为 Nerd 字体，确保图标正常显示。
-
-## 8. 配置 Vim
-
-### 安装 vim-web 配置
-
-```bash
-curl -sLf https://gitee.com/jaywcjlove/vim-web/raw/master/install | bash -s -- install
-```
-
-### 必备插件
-vim-web 已经预置了以下插件：
-- NERDTree (工程文件菜单)
-- Emmet.vim (HTML/CSS 自动补全)
-- Tagbar (代码导航)
-- vim-easymotion (文本搜索)
-- ctrlsf.vim (文件搜索)
-- VimGitGutter (Git 集成)
-- vim-multiple-cursors (多光标编辑)
-- vim-signature (书签可视化)
-- indexer (自动生成标签)
-
-### 推荐主题
-- [vim-colors-solarized](https://github.com/altercation/vim-colors-solarized)
-- [molokai](https://github.com/tomasr/molokai)
-
-## 9. 配置 Zsh
-
-### 在 ~/.zshrc 末尾添加
-
-```bash
-echo '(( ! ${+functions[p10k]} )) || p10k finalize' >>! ~/.zshrc
-```
-
-### PATH 配置
-
-在 `~/.zshrc` 中添加：
-```bash
-export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+brew install neovim lazygit yazi fzf zoxide ripgrep fd bat eza starship
 ```
 
 ## ✅ 验证安装
 
-完成以上步骤后，重启终端并验证：
-
 ```bash
-# 检查 Node.js
-node --version
-npm --version
-```
+# 检查 Zsh
+zsh --version
 
-```bash
-# 检查 Oh My Zsh
-echo $ZSH_VERSION
-```
+# 检查 Neovim
+nvim --version
 
-```bash
-# 检查 Zimfw
-zimfw --version
+# 检查 Starship
+starship --version
 ```
 
 ## 🎉 下一步
 
-环境安装完成后，继续安装 [开发工具](./development-tools.md) 吧！
+- [Shell 配置](./shell-editor-setup.md)
+- [Git 配置](./git.md)
+- [SSH 配置](./ssh-setup.md)
 
 ---
 

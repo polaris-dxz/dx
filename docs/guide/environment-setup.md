@@ -10,8 +10,8 @@ lastUpdated: true
 
 | 系统 | 说明 |
 |------|------|
-| [macOS 环境安装](./environment-setup-macos.md) | Xcode Command Line Tools、Homebrew、Oh My Zsh、Zimfw 等 |
-| [Linux 环境安装](./environment-setup-linux.md) | 基础开发工具、包管理、Oh My Zsh、Zimfw 等 |
+| [macOS 环境安装](./environment-setup-macos.md) | Xcode Command Line Tools、Homebrew、fnm、Dotfiles 等 |
+| [Linux 环境安装](./environment-setup-linux.md) | 基础开发工具、包管理、fnm、Dotfiles 等 |
 | [Windows 环境安装](./environment-setup-windows.md) | Git、Chocolatey、Windows Terminal、Oh My Posh 等 |
 
 各平台推荐安装顺序（例如 Mac 上先装 CLT 再装 Homebrew）写在对应系统文档开头。
